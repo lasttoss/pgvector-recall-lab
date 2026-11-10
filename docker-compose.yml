@@ -1,0 +1,10 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: pgvector-recall-lab
+    environment:
+      POSTGRES_PASSWORD: lab
+      POSTGRES_DB: lab
+    ports:
+      - "55432:5432"
+    command: ["postgres", "-c", "shared_buffers=256MB", "-c", "work_mem=64MB"]
