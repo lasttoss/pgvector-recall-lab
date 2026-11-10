@@ -40,10 +40,38 @@ phòng khách", "vòi nước cho chậu rửa mặt" — returns **zero rows** 
 those words appear in a product called "đèn LED âm trần Rạng Đông 9W 4000K". This is not a
 tuning problem; it is what lexical search does.
 
-**And the second headline: vector search only found something relevant in 37.5% of those
-queries.** A 384-dimension MiniLM is a weak retriever on a catalogue where 900 items differ
+**And the second headline: the default 384-dim model only found something relevant in 37.5% of
+those queries** — see the model comparison below, where a stronger model reaches 0.625. A 384-dimension MiniLM is a weak retriever on a catalogue where 900 items differ
 mostly by a wattage and a colour temperature. The bottleneck is the embedding model, not the
 fusion: hybrid cannot beat the best of its inputs, and adding BM25's zeros changes nothing.
+
+
+## Model comparison — the bottleneck is the model, not the fusion
+
+Three embeddings, same catalogue, same queries, same database. `hit@10` is "did anything
+relevant reach the page".
+
+| model | dims | hit@10 paraphrase | hit@10 exact | recall@10 exact | encode docs/s (CPU) | HNSW bytes/row |
+|---|---|---|---|---|---|---|
+| `paraphrase-multilingual-MiniLM-L12-v2` | 384 | 0.375 | 0.867 | 0.768 | 88 | 1 966 |
+| `minishlab/potion-multilingual-128M` (static) | 256 | 0.375 | 0.950 | 0.882 | **7 837** | 1 319 |
+| `intfloat/multilingual-e5-large` | 1024 | **0.625** | **1.000** | **0.993** | 7 | 7 835 |
+
+Three things this says:
+
+1. **Upgrading the model moved paraphrase hit@10 from 0.375 to 0.625 — +25 points.** No amount
+   of fusion tuning closes that gap, because RRF cannot create a relevant document the vector
+   retriever never returned.
+2. **The cost is not on the query path, it is on the ingest path.** e5-large encodes 7 docs/s on
+   this CPU: re-embedding 100 000 products is ~4 hours, versus 13 seconds for the static model.
+   That is the real argument in the meeting, not the benchmark table.
+3. **A 256-dim static model beats a 384-dim transformer on exact queries** (0.950 vs 0.867) at
+   90× the encode speed, and loses nothing on paraphrase (both 0.375). Cheap is not the same as
+   worse; which one wins depends on the query mix, which is why the query sets are separated.
+
+**Gotcha:** E5 models are trained with asymmetric prefixes. Without `query: ` and `passage: `
+the numbers are wrong in a way that looks like "the model is bad". `scripts/build_index.py` and
+`scripts/eval.py` apply them when the model name contains `e5`.
 
 ## ANN quality is not free, and at this size it is not even a speedup
 
