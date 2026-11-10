@@ -181,6 +181,37 @@ PYTHONPATH=/tmp/emblibs python3 scripts/eval_ann.py
 ```
 
 
+
+## Translate first, then search in English?
+
+The obvious alternative to a multilingual embedding model: machine-translate the corpus into
+English, use a strong English embedder, and keep `pgvector`. Measured with `Helsinki-NLP/opus-mt-vi-en`
+(288 MB, Apache-2.0, CPU) plus `nomic-embed-text-v1.5` as the English embedder:
+
+| variant | recall@10 | MRR@10 | hit@10 |
+|---|---|---|---|
+| translate **docs + queries**, English model | 0.105 | **0.290** | 0.550 |
+| translate **docs only**, queries stay Vietnamese | 0.011 | 0.047 | **0.150** |
+| no translation, `multilingual-e5-large` (for comparison) | 0.111 | 0.244 | 0.625 |
+
+Three findings:
+
+1. **Both sides must be translated.** Translating documents but leaving queries in Vietnamese
+   collapses hit@10 to 0.150 — the vectors live in different languages. This is the failure that
+   looks like "the search is broken" rather than "the pipeline is wrong".
+2. **It is competitive but not better.** MRR@10 improves over the multilingual model (0.290 vs
+   0.244) while hit@10 drops (0.550 vs 0.625). Translation is a wash on quality, so decide on cost.
+3. **Translation costs 205 ms per query on this CPU** (2 067 ms if the model is not kept warm — an
+   easy mistake when the translate function loads the model on every call). On top of that you pay
+   for a second copy of the corpus, and every product name and unit is a chance for the translator
+   to invent something: `tấm gỗ ép làm tủ` became "plywood for a cabinet" — usable, but "đèn LED âm
+   trần" style terms do not always survive.
+
+For CRM feedback specifically, translation is usually the wrong first move: the query is not a
+search box, it is "find feedback like this one" and "group these 400 tickets", both of which work
+better on the original Vietnamese with a multilingual model. Translate when the *consumer* of the
+text is English-reading staff, not when the consumer is a vector index.
+
 ## Does pgvector hold up? What it did and did not handle
 
 Everything measured in this README ran inside Postgres: six embedding models (256, 384, 768 and
