@@ -73,6 +73,36 @@ Three things this says:
 the numbers are wrong in a way that looks like "the model is bad". `scripts/build_index.py` and
 `scripts/eval.py` apply them when the model name contains `e5`.
 
+
+## Reranking with a decision model (`typesafe/jev`) instead of a local cross-encoder
+
+A decision model answers a named question with a probability (`noul` = yes/no, `choice`, `score`)
+and never writes text — which makes it a reranker, not an embedder. Used here as the second
+stage: recall 20 candidates locally, ask one question per candidate, sort by probability.
+
+| pipeline | hit@10 | MRR@10 | p50 per query | cost per query |
+|---|---|---|---|---|
+| potion recall only (256 dims, local) | 0.375 | 0.182 | 0.7 ms | $0 |
+| potion recall + Jev rerank | 0.475 | 0.210 | 769 ms | $0.000085 |
+| e5-large recall only (1024 dims, local) | 0.625 | 0.244 | 3.2 ms | $0 |
+| **e5-large recall + Jev rerank** | **0.725** | **0.373** | 755 ms | $0.000085 |
+
+Three conclusions, and the third is the one that matters:
+
+1. **A reranker cannot repair recall.** Reranking the weak 256-dim list improves hit@10 by
+   10 points but stays below the strong-model list on its own (0.475 < 0.625). The reranker only
+   reorders what it is given.
+2. **On top of good recall it earns its place:** 0.625 → 0.725 hit@10 and MRR 0.244 → 0.373.
+   Precision is exactly what the second stage is for.
+3. **755 ms and $0.000085 per query is the price.** At 2 070 input tokens per query, 100 000
+   queries a month is ~$8.5 — cheap — but 755 ms rules this out for search-as-you-type and puts
+   it in the "Ask AI" box instead. A local cross-encoder would be ~20–50 ms at zero marginal cost
+   once the hardware exists; that trade is the actual decision.
+
+**Operational gotcha:** the endpoint returns `403` with Cloudflare error `1010` for ordinary HTTP
+clients (Python `urllib`), and `200` for the same request through `curl` with a browser
+`User-Agent`. If a design doc says "just an HTTP client", that is where it breaks.
+
 ## ANN quality is not free, and at this size it is not even a speedup
 
 Ground truth = exact top-10 over all rows with indexes disabled. Then the same queries through
