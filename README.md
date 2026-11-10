@@ -180,6 +180,34 @@ PYTHONPATH=/tmp/emblibs python3 scripts/eval.py out/queries_paraphrase.json
 PYTHONPATH=/tmp/emblibs python3 scripts/eval_ann.py
 ```
 
+
+## Does pgvector hold up? What it did and did not handle
+
+Everything measured in this README ran inside Postgres: six embedding models (256, 384, 768 and
+1 024 dimensions), HNSW indexes, cosine search, filters and RRF in application code. Nothing about
+the models failed because of pgvector — the failures were in *loading models* (no ONNX build for
+v2-moe, and a `transformers` version clash), which has nothing to do with the database.
+
+**Filtered search, tested:** with `WHERE cat = 'chau lavabo'` (53 of 900 rows), plain HNSW,
+HNSW with `iterative_scan = relaxed_order`, and an exact scan all returned 10 rows per query with
+the same latency. With a filter that matches a single row, all three return that one row. So at this
+size **the known filtered-search degradation did not reproduce** — the corpus is too small for the
+graph walk to run out of matching tuples. Reporting it as "pgvector handles filters fine" would be
+an overclaim; the honest statement is that this lab cannot measure that failure, and it needs a
+corpus in the 10^5 range with selective filters.
+
+**What pgvector genuinely does not do:**
+
+| missing | consequence in this lab |
+|---|---|
+| real BM25 (only `tsvector` + `ts_rank_cd`) | lexical returned **0 rows for 40/40** paraphrase queries; there is no IDF weighting worth tuning |
+| facets, highlighting, aggregations | a marketplace needs these; they are an application-side query each |
+| horizontal scaling / sharding | one primary, one index build at a time (`maintenance_work_mem` must fit the graph) |
+| reranking | the second stage lives in application code (this lab used a decision model over HTTP) |
+
+That list is the actual argument for adding Elasticsearch/OpenSearch later: not "pgvector is slow",
+but "the lexical and faceted half of search is not what Postgres is for".
+
 ## What this does not prove
 
 * **The data is synthetic.** Structure is realistic; the numbers say nothing about a real

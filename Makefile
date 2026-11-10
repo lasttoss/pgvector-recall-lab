@@ -14,3 +14,4 @@ rerank-choice: ; $(PY) scripts/eval_rerank_jev_choice.py out/queries_paraphrase.
 nomic:   ; $(PY) scripts/build_index.py items_nomic nomic-ai/nomic-embed-text-v1.5 && $(PY) scripts/build_index.py items_nomicq nomic-ai/nomic-embed-text-v1.5-Q
 # v2-moe has no ONNX build: needs PyTorch + transformers 4.x, and remote code
 v2moe:   ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/build_index.py items_nomicv2 nomic-ai/nomic-embed-text-v2-moe
+filter:  ; $(PY) scripts/eval_filter.py
