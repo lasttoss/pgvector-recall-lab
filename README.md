@@ -212,6 +212,52 @@ search box, it is "find feedback like this one" and "group these 400 tickets", b
 better on the original Vietnamese with a multilingual model. Translate when the *consumer* of the
 text is English-reading staff, not when the consumer is a vector index.
 
+
+## Storing both languages in parallel (dual column, dual index)
+
+The design under test: on ingest, keep the Vietnamese text, also store an English translation,
+embed both, index both, and search both. Measured on 40 paraphrases:
+
+| index searched | recall@10 | MRR@10 | hit@10 |
+|---|---|---|---|
+| Vietnamese only (`e5-large`) | 0.111 | 0.244 | **0.625** |
+| English only (translated) | 0.105 | 0.290 | 0.550 |
+| both, fused with RRF | 0.102 | **0.310** | 0.575 |
+
+**Fusion raises MRR and lowers hit@10.** The two indexes disagree, so fusing pushes the confident
+result higher (0.244 -> 0.310) while pushing some relevant items out of the top ten (0.625 -> 0.575).
+It is not a free win, and it doubles the storage, the embedding work and the number of things that
+can go stale.
+
+Where dual columns are still right: **when the query language varies**, not when you want better
+quality. A CRM where agents search in English while customers write Vietnamese is the honest case.
+If every query is Vietnamese, one multilingual index covers it.
+
+If you build it, the schema details that bite later:
+
+```sql
+ALTER TABLE feedback
+  ADD COLUMN body_vi      text NOT NULL,
+  ADD COLUMN body_en      text,                 -- NULL until translated
+  ADD COLUMN translated_at timestamptz,
+  ADD COLUMN translator   text,                 -- 'opus-mt-vi-en@1': model versions change
+  ADD COLUMN embedding_vi vector(1024),
+  ADD COLUMN embedding_en vector(768);
+
+-- partial indexes: do not index rows the pipeline has not reached yet
+CREATE INDEX ON feedback USING hnsw (embedding_vi vector_cosine_ops) WHERE embedding_vi IS NOT NULL;
+CREATE INDEX ON feedback USING hnsw (embedding_en vector_cosine_ops) WHERE embedding_en IS NOT NULL;
+```
+
+Three rules that keep this honest:
+
+1. **Never make the insert wait for translation.** Write the row and an outbox job in one
+   transaction; a worker translates, embeds and fills the columns. A translation outage must
+   degrade to "Vietnamese search still works", not "feedback submission is down".
+2. **Store the translator identity and the embedding model version.** Otherwise a model upgrade
+   leaves you unable to tell which rows are in the old vector space.
+3. **Search must tolerate `embedding_en IS NULL`.** On day one that is every row.
+
 ## Does pgvector hold up? What it did and did not handle
 
 Everything measured in this README ran inside Postgres: six embedding models (256, 384, 768 and

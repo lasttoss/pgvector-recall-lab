@@ -16,3 +16,4 @@ nomic:   ; $(PY) scripts/build_index.py items_nomic nomic-ai/nomic-embed-text-v1
 v2moe:   ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/build_index.py items_nomicv2 nomic-ai/nomic-embed-text-v2-moe
 filter:  ; $(PY) scripts/eval_filter.py
 translate: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_translate.py
+dual:    ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_dual.py
