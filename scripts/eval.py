@@ -14,7 +14,12 @@ def strip_accents(s: str) -> str:
     return "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
 
 def prefix(model: str, text: str) -> str:
-    return f"query: {text}" if "e5" in model.lower() else text
+    m = model.lower()
+    if "e5" in m:
+        return f"query: {text}"
+    if "nomic" in m:
+        return f"search_query: {text}"
+    return text
 
 def lexical(cur, table, q):
     a = strip_accents(q).lower()

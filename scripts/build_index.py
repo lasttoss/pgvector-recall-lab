@@ -15,8 +15,17 @@ def strip_accents(s: str) -> str:
     return "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
 
 def prefix(model: str, text: str) -> str:
-    """E5 models are trained with asymmetric prefixes; omitting them misrepresents the model."""
-    return f"passage: {text}" if "e5" in model.lower() else text
+    """Models trained with asymmetric task prefixes; omitting them misrepresents the model.
+
+    e5:    "query: " / "passage: "
+    nomic: "search_query: " / "search_document: "
+    """
+    m = model.lower()
+    if "e5" in m:
+        return f"passage: {text}"
+    if "nomic" in m:
+        return f"search_document: {text}"
+    return text
 
 def main():
     table = sys.argv[1] if len(sys.argv) > 1 else "items"

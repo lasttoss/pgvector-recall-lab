@@ -30,7 +30,12 @@ def main():
     qfile = sys.argv[1] if len(sys.argv) > 1 else "out/queries_paraphrase.json"
     qs = json.load(open(qfile))
     def prefix(t):
-        return f"query: {t}" if "e5" in MODEL.lower() else t
+        m = MODEL.lower()
+        if "e5" in m:
+            return f"query: {t}"
+        if "nomic" in m:
+            return f"search_query: {t}"
+        return t
     emb = TextEmbedding(model_name=MODEL)
     qvecs = list(emb.embed([prefix(q["q"]) for q in qs]))
     rows = []

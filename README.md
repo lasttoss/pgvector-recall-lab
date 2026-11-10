@@ -55,7 +55,9 @@ relevant reach the page".
 |---|---|---|---|---|---|---|
 | `paraphrase-multilingual-MiniLM-L12-v2` | 384 | 0.375 | 0.867 | 0.768 | 88 | 1 966 |
 | `minishlab/potion-multilingual-128M` (static) | 256 | 0.375 | 0.950 | 0.882 | **7 837** | 1 319 |
-| `intfloat/multilingual-e5-large` | 1024 | **0.625** | **1.000** | **0.993** | 7 | 7 835 |
+| `intfloat/multilingual-e5-large` | 1024 | **0.625** | 1.000 | 0.993 | 7 | 7 835 |
+| `nomic-ai/nomic-embed-text-v1.5` (English) | 768 | 0.425 | 1.000 | **1.000** | 12 | 3 923 |
+| `nomic-ai/nomic-embed-text-v1.5-Q` (quantised, same weights) | 768 | 0.425 | 1.000 | 0.998 | **34** | 4 059 |
 
 Three things this says:
 
@@ -69,9 +71,21 @@ Three things this says:
    90× the encode speed, and loses nothing on paraphrase (both 0.375). Cheap is not the same as
    worse; which one wins depends on the query mix, which is why the query sets are separated.
 
-**Gotcha:** E5 models are trained with asymmetric prefixes. Without `query: ` and `passage: `
+**Quantisation is nearly free here:** the `-Q` build of nomic v1.5 runs 2.8x faster (12 -> 34 docs/s,
+query 26.1 -> 11.8 ms) and costs nothing measurable on paraphrase (0.425 both), with MRR on exact
+queries 1.000 -> 0.978. If someone asks "would int8 work for us", this is the shape of the answer:
+yes, and the loss shows up in ranking quality, not in recall.
+
+**English models are not automatically wrong on a Vietnamese catalogue**, which surprised me: nomic
+v1.5 is tagged `en` only, yet it scored a perfect MRR@10 on exact queries (brand names, wattages and
+sizes are Latin script) — and fell to 0.425 on paraphrase, exactly as expected for an English model.
+The lesson is to measure per query type instead of reading the language tag and guessing. If the
+nomic family is attractive, `nomic-embed-text-v2-moe` is the multilingual one (Apache-2.0, `vi` is in
+its language list) and is the version to test next.
+
+**Gotcha:** E5 models are trained with asymmetric prefixes (`nomic` uses `search_query: ` / `search_document: `). Without them
 the numbers are wrong in a way that looks like "the model is bad". `scripts/build_index.py` and
-`scripts/eval.py` apply them when the model name contains `e5`.
+`scripts/eval.py` apply them when the model name contains `e5` or `nomic`.
 
 
 ## Reranking with a decision model (`typesafe/jev`) instead of a local cross-encoder
