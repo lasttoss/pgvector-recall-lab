@@ -99,6 +99,21 @@ Three conclusions, and the third is the one that matters:
    it in the "Ask AI" box instead. A local cross-encoder would be ~20–50 ms at zero marginal cost
    once the hardware exists; that trade is the actual decision.
 
+### Asking 20 questions vs asking one
+
+Same recall list, same 20 candidates, two ways to phrase the rerank:
+
+| phrasing | hit@10 | MRR@10 | p50/query | input tokens / 40 queries |
+|---|---|---|---|---|
+| 20 × `noul` ("is candidate N relevant?") | 0.725 | **0.373** | 755 ms | 82 789 |
+| 1 × `choice` (criteria = the 20 candidates) | 0.725 | 0.344 | 774 ms | **75 363** |
+
+The expected win did not appear: **one question is not faster than twenty** (774 ms vs 755 ms).
+Latency is dominated by prompt size and the model call itself, not by the number of questions, so
+the only saving is ~9% of input tokens — about $0.000003 per query. `noul` scored marginally
+better on MRR, which is the number to keep if you must choose: put the candidates in the state
+once and ask a short question per candidate.
+
 **Operational gotcha:** the endpoint returns `403` with Cloudflare error `1010` for ordinary HTTP
 clients (Python `urllib`), and `200` for the same request through `curl` with a browser
 `User-Agent`. If a design doc says "just an HTTP client", that is where it breaks.

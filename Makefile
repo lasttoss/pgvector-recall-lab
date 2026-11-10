@@ -10,3 +10,4 @@ clean:   ; docker compose down -v
 models:  ; $(PY) scripts/build_index.py items_potion minishlab/potion-multilingual-128M && $(PY) scripts/build_index.py items_e5large intfloat/multilingual-e5-large
 compare: ; for m in "items|sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2" "items_potion|minishlab/potion-multilingual-128M" "items_e5large|intfloat/multilingual-e5-large"; do t=$${m%%|*}; f=$${m##*|}; $(PY) scripts/eval.py out/queries_paraphrase.json $$t $$f; done
 rerank:  ; $(PY) scripts/eval_rerank_jev.py out/queries_paraphrase.json items_potion minishlab/potion-multilingual-128M && $(PY) scripts/eval_rerank_jev.py out/queries_paraphrase.json items_e5large intfloat/multilingual-e5-large
+rerank-choice: ; $(PY) scripts/eval_rerank_jev_choice.py out/queries_paraphrase.json items_e5large intfloat/multilingual-e5-large
