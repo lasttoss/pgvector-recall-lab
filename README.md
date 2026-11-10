@@ -258,6 +258,41 @@ Three rules that keep this honest:
    leaves you unable to tell which rows are in the old vector space.
 3. **Search must tolerate `embedding_en IS NULL`.** On day one that is every row.
 
+## One document, two language versions: rank by the best distance
+
+When the same source exists in Vietnamese and English (a knowledge base behind a chat assistant),
+do not pick a column per query and do not store them as two rows. Keep **one row per document, two
+vector columns, one model**, and rank by `LEAST(dist_vi, dist_en)`:
+
+```sql
+SELECT v.id, LEAST(v.embedding <=> $1, e.embedding <=> $1) AS d
+FROM doc_vi v JOIN doc_en e USING (id)
+ORDER BY d LIMIT 10;
+```
+
+Measured on 40 Vietnamese paraphrases and their English translations, `multilingual-e5-large`
+embedding both columns (same model, so the distances are comparable):
+
+| query language | searched | recall@10 | MRR@10 | hit@10 |
+|---|---|---|---|---|
+| Vietnamese | VI column only | 0.111 | 0.244 | 0.625 |
+| Vietnamese | **best of VI + EN** | 0.111 | 0.244 | **0.625** |
+| English | EN column only | 0.089 | 0.230 | 0.650 |
+| English | **best of VI + EN** | 0.089 | 0.230 | **0.650** |
+| Vietnamese | EN column only | 0.055 | 0.179 | 0.500 |
+
+Two things follow. First, combining never lost anything: each language reproduced its own
+single-column score exactly, because the winning distance almost always came from the matching
+language. That is automatic language routing without a language detector, which matters for chat
+messages that mix languages in one sentence. Second, forcing a Vietnamese query onto the English
+column costs real recall (0.625 -> 0.500), so "just embed the English version" is the wrong call.
+
+The constraint that makes this work: **both columns must use the same model**. `LEAST` over
+distances from two different models is comparing uncalibrated numbers and the ranking is noise.
+If the two versions must use different models (an English-only embedder for EN, a Vietnamese one
+for VI), you cannot fuse at the SQL level — you need per-language normalisation, and that is a
+much larger project than it looks.
+
 ## Does pgvector hold up? What it did and did not handle
 
 Everything measured in this README ran inside Postgres: six embedding models (256, 384, 768 and

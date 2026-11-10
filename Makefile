@@ -17,3 +17,4 @@ v2moe:   ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/build_index.py 
 filter:  ; $(PY) scripts/eval_filter.py
 translate: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_translate.py
 dual:    ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_dual.py
+ragdual: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_rag_dual.py
