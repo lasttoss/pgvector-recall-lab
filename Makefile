@@ -12,3 +12,5 @@ compare: ; for m in "items|sentence-transformers/paraphrase-multilingual-MiniLM-
 rerank:  ; $(PY) scripts/eval_rerank_jev.py out/queries_paraphrase.json items_potion minishlab/potion-multilingual-128M && $(PY) scripts/eval_rerank_jev.py out/queries_paraphrase.json items_e5large intfloat/multilingual-e5-large
 rerank-choice: ; $(PY) scripts/eval_rerank_jev_choice.py out/queries_paraphrase.json items_e5large intfloat/multilingual-e5-large
 nomic:   ; $(PY) scripts/build_index.py items_nomic nomic-ai/nomic-embed-text-v1.5 && $(PY) scripts/build_index.py items_nomicq nomic-ai/nomic-embed-text-v1.5-Q
+# v2-moe has no ONNX build: needs PyTorch + transformers 4.x, and remote code
+v2moe:   ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/build_index.py items_nomicv2 nomic-ai/nomic-embed-text-v2-moe

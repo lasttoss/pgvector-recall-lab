@@ -58,6 +58,7 @@ relevant reach the page".
 | `intfloat/multilingual-e5-large` | 1024 | **0.625** | 1.000 | 0.993 | 7 | 7 835 |
 | `nomic-ai/nomic-embed-text-v1.5` (English) | 768 | 0.425 | 1.000 | **1.000** | 12 | 3 923 |
 | `nomic-ai/nomic-embed-text-v1.5-Q` (quantised, same weights) | 768 | 0.425 | 1.000 | 0.998 | **34** | 4 059 |
+| `nomic-ai/nomic-embed-text-v2-moe` (multilingual, MoE) | 768 | 0.575 | 1.000 | 0.956 | 22 | 3 969 |
 
 Three things this says:
 
@@ -70,6 +71,15 @@ Three things this says:
 3. **A 256-dim static model beats a 384-dim transformer on exact queries** (0.950 vs 0.867) at
    90× the encode speed, and loses nothing on paraphrase (both 0.375). Cheap is not the same as
    worse; which one wins depends on the query mix, which is why the query sets are separated.
+
+**The multilingual MoE does not win outright.** `nomic-embed-text-v2-moe` (475M total, 305M active,
+~100 languages including Vietnamese) reaches 0.575 paraphrase hit@10 — better than every model except
+`multilingual-e5-large` (0.625), and better than it on exact-query MRR (0.956 vs 0.930) — while
+encoding 3x faster than e5-large (22 vs 7 docs/s). Its query embedding costs 79 ms against e5-large's
+38 ms, so it is the better *backfill* model and the worse *query-time* model. Two operational notes:
+no ONNX build is published (`fastembed` cannot load it — this lab uses PyTorch CPU, which needs
+`transformers==4.46` because the remote code calls `get_extended_attention_mask`, removed in v5),
+and `trust_remote_code=True` means executing code from the model repository on your servers.
 
 **Quantisation is nearly free here:** the `-Q` build of nomic v1.5 runs 2.8x faster (12 -> 34 docs/s,
 query 26.1 -> 11.8 ms) and costs nothing measurable on paraphrase (0.425 both), with MRR on exact

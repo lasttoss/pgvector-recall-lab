@@ -4,6 +4,7 @@
 usage: eval.py <query-file> [table] [model]
 """
 import json, statistics, sys, time, unicodedata, psycopg2
+sys.path.insert(0, "scripts")
 from fastembed import TextEmbedding
 
 DSN = "postgresql://postgres:lab@127.0.0.1:55432/lab"
@@ -56,8 +57,12 @@ def main():
     table = sys.argv[2] if len(sys.argv) > 2 else "items"
     model = sys.argv[3] if len(sys.argv) > 3 else "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
     qs = json.load(open(qfile))
-    emb = TextEmbedding(model_name=model)
-    qvecs = list(emb.embed([prefix(model, q["q"]) for q in qs]))
+    qtexts = [prefix(model, q["q"]) for q in qs]
+    if "nomic-embed-text-v2" in model:
+        import nomicv2
+        qvecs = nomicv2.embed(qtexts)
+    else:
+        qvecs = list(TextEmbedding(model_name=model).embed(qtexts))
     res = {k: [[], [], []] for k in ("lexical", "vector", "hybrid")}
     lat = {k: [] for k in res}
     empty = {k: 0 for k in res}

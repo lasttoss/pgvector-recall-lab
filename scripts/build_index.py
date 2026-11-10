@@ -6,6 +6,7 @@ Embedding dimension is read from the model, so comparing models means comparing
 tables rather than fighting one fixed schema.
 """
 import json, sys, unicodedata, psycopg2
+sys.path.insert(0, "scripts")
 from fastembed import TextEmbedding
 
 DSN = "postgresql://postgres:lab@127.0.0.1:55432/lab"
@@ -31,9 +32,12 @@ def main():
     table = sys.argv[1] if len(sys.argv) > 1 else "items"
     model = sys.argv[2] if len(sys.argv) > 2 else "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
     rows = json.load(open("out/catalogue.json"))
-    emb = TextEmbedding(model_name=model)
     texts = [prefix(model, f"{r['name']}. {r['desc']}") for r in rows]
-    vectors = list(emb.embed(texts))
+    if "nomic-embed-text-v2" in model:
+        import nomicv2
+        vectors = nomicv2.embed(texts)
+    else:
+        vectors = list(TextEmbedding(model_name=model).embed(texts))
     dim = len(vectors[0])
     print(f"model={model} dim={dim} table={table}")
     with psycopg2.connect(DSN) as conn, conn.cursor() as cur:
