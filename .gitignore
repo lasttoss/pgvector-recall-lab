@@ -1,2 +1,5 @@
 out/catalogue.json
 out/*.json
+out/*.log
+scripts/__pycache__/
+*.pyc

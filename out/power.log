@@ -1,27 +1,0 @@
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 16420.42it/s]
-done e5-large (baseline)
-Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 37148.84it/s]
-done bge-m3
-Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 17611.91it/s]
-This model was loaded in torch.bfloat16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
-done Qwen3-0.6B + instruct
-Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 17768.82it/s]
-done Vietnamese_Embedding (AITeamVN)
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 16729.13it/s]
-done vietnamese-bi-encoder (bkai)
-
-model                               hit@10  recall    MRR  chênh e5            95% CI  verdict
-e5-large (baseline)                  0.696   0.415  0.552    +0.000 [+0.000, +0.000]  không phân biệt
-bge-m3                               0.676   0.369  0.478    -0.020 [-0.064, +0.020]  không phân biệt
-Qwen3-0.6B + instruct                0.588   0.306  0.438    -0.108 [-0.164, -0.052]  KÉM HƠN
-Vietnamese_Embedding (AITeamVN)      0.676   0.332  0.473    -0.020 [-0.060, +0.020]  không phân biệt
-vietnamese-bi-encoder (bkai)         0.620   0.268  0.396    -0.076 [-0.132, -0.024]  KÉM HƠN
-
-per slice (hit@10):
-model                                  brand    nodauc     plain   verbose
-e5-large (baseline)                    0.935     0.302     0.762     0.790
-bge-m3                                 0.903     0.238     0.794     0.774
-Qwen3-0.6B + instruct                  0.855     0.159     0.651     0.694
-Vietnamese_Embedding (AITeamVN)        0.887     0.333     0.730     0.758
-vietnamese-bi-encoder (bkai)           0.919     0.270     0.746     0.548
