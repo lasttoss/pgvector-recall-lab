@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" width="960" height="560" role="img" aria-labelledby="t d" id="query-sequence-root">
+  <title id="t">Sequence of one search request: embed 19 ms, probes 19 ms, optional rerank 774 ms</title>
+  <desc id="d">Client posts a query to the API, which embeds it, issues three probes to PostgreSQL in one pass, fuses the candidates with reciprocal rank fusion, optionally reranks the top fifty with a decision model, and returns ten results. The fast path costs about forty milliseconds; turning rerank on adds seven hundred and seventy-four.</desc>
+  <rect x="0" y="0" width="960" height="560" fill="var(--paper)"/>
+
+  <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #query-sequence-root { --paper:#f5f5f5; --paper-2:#ececec; --ink:#2d3142; --muted:#4f5d75; --soft:#7a8399;
+    --rule:rgba(45,49,66,0.12); --rule-solid:#bfc0c0; --accent:#eb6c36;
+    --accent-tint:rgba(235,108,54,0.08); --link:#2e5aa8; }
+      #query-sequence-root { font-family: Inter,system-ui,-apple-system,"Segoe UI",sans-serif; color: var(--ink); }
+      #query-sequence-root figure { margin:0;max-width:1000px; }
+      #query-sequence-root figcaption { margin-top:18px;font-size:13px;line-height:1.55;color:var(--muted);max-width:78ch; }
+      #query-sequence-root .mono { font-family:ui-monospace,"SF Mono",Menlo,monospace; }</style>
+    <marker id="query-sequence-call" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--muted)"/>
+    </marker>
+    <marker id="query-sequence-ret" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--soft)"/>
+    </marker>
+    <marker id="query-sequence-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <!-- actors -->
+  <g>
+    <rect x="40" y="34" width="120" height="34" rx="3" fill="var(--paper-2)" stroke="var(--rule-solid)"/>
+    <text x="100" y="56" font-size="12.5" font-weight="600" text-anchor="middle">client</text>
+    <rect x="238" y="34" width="120" height="34" rx="3" fill="var(--paper-2)" stroke="var(--rule-solid)"/>
+    <text x="298" y="56" font-size="12.5" font-weight="600" text-anchor="middle">API</text>
+    <rect x="418" y="34" width="128" height="34" rx="3" fill="var(--paper-2)" stroke="var(--rule-solid)"/>
+    <text x="482" y="56" font-size="12.5" font-weight="600" text-anchor="middle">embedder</text>
+    <rect x="600" y="34" width="132" height="34" rx="3" fill="var(--accent-tint)" stroke="var(--accent)"/>
+    <text x="666" y="56" font-size="12.5" font-weight="600" text-anchor="middle">PostgreSQL</text>
+    <rect x="790" y="34" width="130" height="34" rx="3" fill="var(--paper-2)" stroke="var(--rule-solid)"/>
+    <text x="855" y="56" font-size="12.5" font-weight="600" text-anchor="middle">reranker</text>
+  </g>
+
+  <!-- lifelines -->
+  <g stroke="var(--rule-solid)" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="100" y1="68" x2="100" y2="520"/>
+    <line x1="298" y1="68" x2="298" y2="520"/>
+    <line x1="482" y1="68" x2="482" y2="520"/>
+    <line x1="666" y1="68" x2="666" y2="520"/>
+    <line x1="855" y1="68" x2="855" y2="520"/>
+  </g>
+
+  <!-- 1. client -> api -->
+  <line x1="100" y1="104" x2="294" y2="104" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#query-sequence-call)"/>
+  <text x="112" y="98" font-size="11.5" class="mono">POST /search { query }</text>
+
+  <!-- 2. api -> embedder -->
+  <line x1="298" y1="146" x2="478" y2="146" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#query-sequence-call)"/>
+  <text x="310" y="140" font-size="11.5" class="mono">embed(query)</text>
+  <rect x="476" y="150" width="8" height="46" fill="var(--paper-2)" stroke="var(--muted)" stroke-width="0.8"/>
+  <text x="496" y="176" font-size="11" fill="var(--soft)" class="mono">17–19 ms · CPU</text>
+
+  <!-- 3. return vector -->
+  <line x1="476" y1="196" x2="302" y2="196" stroke="var(--soft)" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#query-sequence-ret)"/>
+  <text x="312" y="190" font-size="11.5" fill="var(--soft)" class="mono">1024-d vector</text>
+
+  <!-- 4. api -> postgres -->
+  <line x1="298" y1="238" x2="662" y2="238" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#query-sequence-call)"/>
+  <text x="310" y="232" font-size="11.5" class="mono">3 probes in one pass — lexical, vector ×2</text>
+  <rect x="660" y="242" width="8" height="52" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="0.8"/>
+  <text x="680" y="264" font-size="11" fill="var(--soft)" class="mono">5.4 ms one index</text>
+  <text x="680" y="280" font-size="11" fill="var(--soft)" class="mono">18.8 ms two, merged</text>
+
+  <!-- 5. return candidates -->
+  <line x1="660" y1="294" x2="302" y2="294" stroke="var(--soft)" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#query-sequence-ret)"/>
+  <text x="312" y="288" font-size="11.5" fill="var(--soft)" class="mono">50 + 50 candidates</text>
+
+  <!-- 6. self message: fuse -->
+  <path d="M 298 322 h 56 v 26 h -56" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#query-sequence-call)"/>
+  <text x="364" y="340" font-size="11.5" class="mono">RRF fuse · k=60</text>
+  <text x="364" y="356" font-size="11" fill="var(--soft)" class="mono">ranking only, no re-embed</text>
+
+  <!-- opt frame: rerank -->
+  <rect x="282" y="376" width="640" height="86" rx="4" fill="#2d3142" stroke="#2d3142" fill-opacity="0.02" stroke-opacity="0.22"/>
+  <rect x="282" y="376" width="44" height="16" rx="2" fill="var(--paper)" stroke="#2d3142" stroke-opacity="0.22"/>
+  <text x="304" y="388" font-size="8.5" text-anchor="middle" fill="var(--muted)" class="mono">OPT</text>
+  <text x="338" y="389" font-size="10.5" fill="var(--muted)">rerank only when the latency budget allows it</text>
+  <line x1="298" y1="412" x2="851" y2="412" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#query-sequence-call)"/>
+  <text x="310" y="406" font-size="11.5" class="mono">top 50 → rerank</text>
+  <text x="700" y="406" font-size="11" fill="var(--soft)" class="mono">774 ms</text>
+  <line x1="851" y1="442" x2="302" y2="442" stroke="var(--soft)" stroke-width="1.2" stroke-dasharray="5 3" marker-end="url(#query-sequence-ret)"/>
+  <text x="600" y="436" font-size="11.5" fill="var(--soft)" class="mono">reordered candidates</text>
+
+  <!-- 7. headline return -->
+  <line x1="298" y1="490" x2="104" y2="490" stroke="var(--accent)" stroke-width="1.6" marker-end="url(#query-sequence-head)"/>
+  <text x="120" y="484" font-size="11.5" font-weight="600" fill="var(--accent)" class="mono">top 10 + source · ≈40 ms fast path</text>
+
+  <!-- budget note -->
+  <text x="700" y="484" font-size="10.5" fill="var(--soft)" class="mono">with rerank: ≈820 ms</text>
+  <text x="700" y="500" font-size="10.5" fill="var(--soft)" class="mono">+1–3 s if an LLM answers</text>
+</svg>

@@ -212,6 +212,18 @@ probes all three in one pass, fuses with RRF, and reranks only where the latency
 Source: [`docs/figures/retrieval-pipeline.html`](docs/figures/retrieval-pipeline.html) — self-contained
 SVG, no remote assets.
 
+## One request, hop by hop
+
+The pipeline figure shows *what* is connected. This second figure answers the question a product
+owner actually asks — where do the milliseconds go — with each hop measured separately at 100k rows.
+
+![Sequence diagram: client posts a query, the API embeds it in 17 to 19 ms, PostgreSQL answers three probes in 18.8 ms, RRF fuses, an optional rerank adds 774 ms, and the client receives ten results](docs/figures/query-sequence.png)
+
+**Figure 2.** One request end to end. Everything up to `top 10 + source` costs about 40 ms; the
+optional rerank adds 774 ms and an answer model adds a further 1–3 s, both *after* the results are
+already rankable — which is why the fast path can show results immediately and stream the answer
+afterwards. Source: [`docs/figures/query-sequence.html`](docs/figures/query-sequence.html).
+
 ## How to run
 
 Prerequisites: Docker (with Compose), Python 3.12, ~8 GB free RAM for the core targets
