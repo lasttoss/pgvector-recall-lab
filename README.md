@@ -222,6 +222,64 @@ MRR 0.244 to **0.344**, at 774 ms per query (`out/rerank_jev.json`). That is +0.
 swapping gave +0.00 inside the noise. If you have one improvement to spend, spend it on the second
 stage, not on a bigger first-stage model.
 
+
+## 250 queries: what is measurable now, and it is not the model
+
+The 40-query set could not separate any two models. Rebuilt as 250 queries in four slices
+(`plain`, `nodauc` = diacritics stripped, `verbose` = filler words added, `brand` = brand is the
+discriminator), gold computed from catalogue attributes only, rejected unless 3 <= |gold| <= 25:
+
+| model | hit@10 | recall@10 | MRR@10 | diff vs e5 | 95% CI | verdict |
+|---|---|---|---|---|---|---|
+| `multilingual-e5-large` | **0.696** | **0.415** | **0.552** | — | — | baseline |
+| `BAAI/bge-m3` | 0.676 | 0.369 | 0.478 | -0.020 | [-0.064, +0.020] | tie |
+| `AITeamVN/Vietnamese_Embedding` | 0.676 | 0.332 | 0.473 | -0.020 | [-0.060, +0.020] | tie |
+| `bkai/vietnamese-bi-encoder` | 0.620 | 0.268 | 0.396 | -0.076 | [-0.132, -0.024] | **worse** |
+| `Qwen3-Embedding-0.6B` + instruction | 0.588 | 0.306 | 0.438 | -0.108 | [-0.164, -0.052] | **worse** |
+
+Two of five models are now confidently worse than e5-large, and the two ties mean "we still cannot
+tell". The 3.8x speed of the Vietnamese bi-encoder is real but it costs 0.076 hit@10 — a price that
+was invisible at 40 queries and is now measurable.
+
+Per slice, the interesting part:
+
+| model | brand | plain | verbose | nodauc |
+|---|---|---|---|---|
+| `multilingual-e5-large` | 0.935 | 0.762 | 0.790 | **0.302** |
+| `BAAI/bge-m3` | 0.903 | 0.794 | 0.774 | 0.238 |
+| `AITeamVN/Vietnamese_Embedding` | 0.887 | 0.730 | 0.758 | **0.333** |
+| `bkai/vietnamese-bi-encoder` | 0.919 | 0.746 | 0.548 | 0.270 |
+| `Qwen3-Embedding-0.6B` + instruction | 0.855 | 0.651 | 0.694 | 0.159 |
+
+**Stripping diacritics costs every model more than half its accuracy** (0.762 -> 0.302 for e5). This
+is not a model problem: it is how a large share of real phone input arrives, and no embedding model
+in this shootout handles it. Filler words, by contrast, cost nothing (0.790 vs 0.762) — dropping
+noise tolerance from the requirements.
+
+### The fix that works: index the unaccented copy as a second vector
+
+Same document, two vectors — accented and diacritics-stripped — ranked by `LEAST` of the two
+distances, exactly like the dual-language pattern above. 63 `nodauc` queries:
+
+| variant | hit@10 | diff | 95% CI |
+|---|---|---|---|
+| accented index only | 0.302 | — | — |
+| stripped index only | 0.413 | +0.111 | [-0.016, +0.238] |
+| **best of both (`LEAST`)** | **0.429** | **+0.127** | **[+0.016, +0.254]** |
+
++0.127 hit@10 for about 2 ms per query and one extra encode per document — the same order of gain
+as cross-encoder reranking (+0.10) at a fraction of the cost. Store
+`embedding` and `embedding_unaccent`, both from the same model, and never make the query side guess
+whether the user typed diacritics.
+
+### What this says about the two strategy options
+
+"Force everything into English" measured 0.550 on the old set and costs 205 ms of translation per
+query. "Find a better Vietnamese model" is a tie at best with e5-large on 250 queries. Neither is
+the lever. The levers that showed up with enough statistical power were **input normalisation
+(diacritics)** and **a second ranking stage** — both cheap, both measurable, both independent of
+which embedding model you buy.
+
 ## Translate first, then search in English?
 
 The obvious alternative to a multilingual embedding model: machine-translate the corpus into

@@ -20,3 +20,6 @@ dual:    ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_dual.py
 ragdual: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_rag_dual.py
 zoo:      ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_model_zoo.py
 bootstrap: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/bootstrap_zoo.py
+power:   ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_power.py
+queries: ; $(PY) scripts/gen_queries_power.py
+diacritics: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_diacritics.py
