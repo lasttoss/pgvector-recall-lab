@@ -1,0 +1,4473 @@
+[
+{
+"q": "giá hợp lý, tôi đang tìm vòi hoa sen tắm đứng đen",
+"gold": [
+29,
+39,
+111,
+114,
+135,
+142,
+199,
+274,
+321,
+376,
+393,
+418,
+429,
+473,
+519,
+542,
+549,
+562,
+689,
+725,
+811,
+816,
+861
+],
+"slice": "verbose",
+"gold_size": 23
+},
+{
+"q": "cần mua gấp, tôi đang tìm toilet cho phòng tắm xám",
+"gold": [
+52,
+73,
+100,
+157,
+163,
+271,
+316,
+319,
+344,
+448,
+459,
+469,
+505,
+545,
+624,
+650,
+769,
+792,
+832,
+877
+],
+"slice": "verbose",
+"gold_size": 20
+},
+{
+"q": "o dien cam phich trang",
+"gold": [
+25,
+155,
+161,
+187,
+207,
+239,
+278,
+292,
+307,
+373,
+510,
+515,
+516,
+612,
+625,
+674,
+679,
+703,
+714,
+802
+],
+"slice": "nodauc",
+"gold_size": 20
+},
+{
+"q": "cho công trình, tôi đang tìm chậu rửa mặt đặt trên bàn đá xám",
+"gold": [
+49,
+67,
+70,
+75,
+172,
+197,
+216,
+374,
+435,
+500,
+539,
+640,
+686,
+878
+],
+"slice": "verbose",
+"gold_size": 14
+},
+{
+"q": "de cam dien am tuong den",
+"gold": [
+6,
+16,
+46,
+128,
+219,
+235,
+252,
+308,
+389,
+391,
+438,
+468,
+575,
+758,
+759,
+791,
+865,
+873
+],
+"slice": "nodauc",
+"gold_size": 18
+},
+{
+"q": "đèn tuýp dài gắn trần trắng ánh sáng trung tính",
+"gold": [
+24,
+126,
+204,
+451,
+570,
+601,
+670,
+782,
+835,
+885
+],
+"slice": "plain",
+"gold_size": 10
+},
+{
+"q": "Philips vòi nước cho chậu rửa mặt",
+"gold": [
+1,
+22,
+229,
+320,
+362,
+398,
+479,
+609,
+634,
+788
+],
+"slice": "brand",
+"gold_size": 10
+},
+{
+"q": "đang cần, tôi đang tìm gỗ ván cho nội thất đen",
+"gold": [
+51,
+107,
+140,
+196,
+275,
+508,
+538,
+687,
+749,
+778,
+822,
+853,
+882
+],
+"slice": "verbose",
+"gold_size": 13
+},
+{
+"q": "nút bấm bật tắt đèn trắng",
+"gold": [
+77,
+193,
+263,
+273,
+409,
+445,
+512,
+526,
+536,
+639,
+641,
+681,
+694,
+838,
+840,
+884,
+894
+],
+"slice": "plain",
+"gold_size": 17
+},
+{
+"q": "Panasonic đèn chiếu tường điểm nhấn ánh sáng vàng ấm",
+"gold": [
+210,
+594,
+717,
+870
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "đang cần, tôi đang tìm gỗ ván cho nội thất xám",
+"gold": [
+212,
+224,
+226,
+231,
+269,
+283,
+289,
+297,
+476,
+598,
+613,
+630,
+662,
+705,
+789
+],
+"slice": "verbose",
+"gold_size": 15
+},
+{
+"q": "để lắp đặt, tôi đang tìm đèn chùm thả xuống bàn ăn đen ánh sáng trung tính",
+"gold": [
+108,
+180,
+223,
+247,
+260,
+812,
+844
+],
+"slice": "verbose",
+"gold_size": 7
+},
+{
+"q": "bệ xí vệ sinh xám",
+"gold": [
+52,
+73,
+100,
+157,
+163,
+271,
+316,
+319,
+344,
+448,
+459,
+469,
+505,
+545,
+624,
+650,
+769,
+792,
+832,
+877
+],
+"slice": "plain",
+"gold_size": 20
+},
+{
+"q": "công tắc chiếu sáng vàng đồng",
+"gold": [
+14,
+79,
+198,
+232,
+238,
+242,
+288,
+331,
+375,
+422,
+449,
+491,
+525,
+719,
+747,
+796,
+891
+],
+"slice": "plain",
+"gold_size": 17
+},
+{
+"q": "vòi hoa sen tắm đứng vàng đồng",
+"gold": [
+18,
+27,
+91,
+95,
+145,
+147,
+169,
+184,
+225,
+301,
+360,
+454,
+528,
+564,
+604,
+658,
+711,
+738,
+819,
+863,
+897
+],
+"slice": "plain",
+"gold_size": 21
+},
+{
+"q": "downlight âm trần đen ánh sáng trung tính",
+"gold": [
+5,
+318,
+412,
+485,
+652
+],
+"slice": "plain",
+"gold_size": 5
+},
+{
+"q": "Hafele chậu rửa mặt đặt trên bàn đá",
+"gold": [
+32,
+357,
+500
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "đèn rọi tranh xám ánh sáng trắng lạnh",
+"gold": [
+92,
+97,
+447,
+701,
+874
+],
+"slice": "plain",
+"gold_size": 5
+},
+{
+"q": "loại tốt, tôi đang tìm đèn treo giữa phòng khách đen ánh sáng trắng lạnh",
+"gold": [
+66,
+87,
+411,
+532,
+723
+],
+"slice": "verbose",
+"gold_size": 5
+},
+{
+"q": "An Cuong công tắc chiếu sáng",
+"gold": [
+179,
+290,
+329,
+392,
+639,
+694,
+719,
+739,
+796,
+800,
+820,
+837,
+838
+],
+"slice": "brand",
+"gold_size": 13
+},
+{
+"q": "cong tac chieu sang vang dong",
+"gold": [
+14,
+79,
+198,
+232,
+238,
+242,
+288,
+331,
+375,
+422,
+449,
+491,
+525,
+719,
+747,
+796,
+891
+],
+"slice": "nodauc",
+"gold_size": 17
+},
+{
+"q": "bệ xí vệ sinh đen",
+"gold": [
+132,
+170,
+326,
+408,
+413,
+480,
+504,
+563,
+610,
+668,
+734,
+784,
+785,
+830,
+836
+],
+"slice": "plain",
+"gold_size": 15
+},
+{
+"q": "Inax đèn rọi tranh ánh sáng vàng ấm",
+"gold": [
+339,
+509,
+585,
+900
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "voi chau rua xam",
+"gold": [
+57,
+96,
+123,
+302,
+397,
+432,
+436,
+522,
+573,
+582,
+634,
+678,
+752,
+788,
+827,
+866
+],
+"slice": "nodauc",
+"gold_size": 16
+},
+{
+"q": "Vicostone ổ điện cắm phích",
+"gold": [
+93,
+187,
+252,
+307,
+373,
+438,
+468,
+612,
+636,
+692
+],
+"slice": "brand",
+"gold_size": 10
+},
+{
+"q": "giá hợp lý, tôi đang tìm vòi nước cho chậu rửa mặt vàng đồng",
+"gold": [
+22,
+37,
+251,
+266,
+477,
+489,
+511,
+533,
+626,
+684,
+709,
+741,
+744,
+776
+],
+"slice": "verbose",
+"gold_size": 14
+},
+{
+"q": "den tuyp dai gan tran den anh sang trung tinh",
+"gold": [
+55,
+314,
+323,
+557,
+729
+],
+"slice": "nodauc",
+"gold_size": 5
+},
+{
+"q": "Dien Quang nút bấm bật tắt đèn",
+"gold": [
+12,
+14,
+63,
+232,
+236,
+263,
+526,
+706
+],
+"slice": "brand",
+"gold_size": 8
+},
+{
+"q": "bộ sen tắm nóng lạnh trắng",
+"gold": [
+38,
+80,
+94,
+120,
+189,
+340,
+342,
+388,
+439,
+464,
+588,
+616,
+617,
+643,
+665,
+708,
+718,
+858,
+892
+],
+"slice": "plain",
+"gold_size": 19
+},
+{
+"q": "đá ốp bếp xám",
+"gold": [
+31,
+33,
+54,
+71,
+110,
+138,
+227,
+330,
+378,
+410,
+478,
+497,
+506,
+591,
+619,
+754,
+773,
+779
+],
+"slice": "plain",
+"gold_size": 18
+},
+{
+"q": "spotlight trần xám ánh sáng trung tính",
+"gold": [
+218,
+584,
+614,
+768,
+848,
+893
+],
+"slice": "plain",
+"gold_size": 6
+},
+{
+"q": "giá hợp lý, tôi đang tìm đèn treo giữa phòng khách vàng đồng ánh sáng vàng ấm",
+"gold": [
+20,
+76,
+129,
+270,
+755
+],
+"slice": "verbose",
+"gold_size": 5
+},
+{
+"q": "den treo giua phong khach xam anh sang trang lanh",
+"gold": [
+30,
+228,
+243,
+311,
+727
+],
+"slice": "nodauc",
+"gold_size": 5
+},
+{
+"q": "bệ xí vệ sinh trắng",
+"gold": [
+23,
+61,
+134,
+144,
+151,
+160,
+183,
+245,
+250,
+535,
+548,
+629,
+698,
+737,
+760,
+797,
+823,
+888,
+899
+],
+"slice": "plain",
+"gold_size": 19
+},
+{
+"q": "den treo giua phong khach vang dong anh sang trung tinh",
+"gold": [
+56,
+249,
+494,
+572,
+847
+],
+"slice": "nodauc",
+"gold_size": 5
+},
+{
+"q": "Hafele đế cắm điện âm tường",
+"gold": [
+50,
+442,
+575,
+672,
+873
+],
+"slice": "brand",
+"gold_size": 5
+},
+{
+"q": "ổ điện cắm phích xám",
+"gold": [
+13,
+26,
+93,
+165,
+286,
+369,
+414,
+442,
+482,
+552,
+569,
+605,
+793
+],
+"slice": "plain",
+"gold_size": 13
+},
+{
+"q": "để lắp đặt, tôi đang tìm spotlight trần xám ánh sáng vàng ấm",
+"gold": [
+339,
+594,
+900
+],
+"slice": "verbose",
+"gold_size": 3
+},
+{
+"q": "đèn chiếu điểm trên trần đen ánh sáng trắng lạnh",
+"gold": [
+88,
+282,
+654
+],
+"slice": "plain",
+"gold_size": 3
+},
+{
+"q": "Hafele bệ xí vệ sinh",
+"gold": [
+73,
+100,
+215,
+271,
+364,
+456,
+620,
+760,
+772
+],
+"slice": "brand",
+"gold_size": 9
+},
+{
+"q": "mat ban da tu nhien trang",
+"gold": [
+284,
+343,
+417,
+433,
+460,
+493,
+501,
+587,
+623,
+676,
+697,
+722,
+756,
+810,
+869,
+889,
+895
+],
+"slice": "nodauc",
+"gold_size": 17
+},
+{
+"q": "Panasonic nút bấm bật tắt đèn",
+"gold": [
+77,
+79,
+148,
+681,
+795,
+891
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "vòi hoa sen tắm đứng xám",
+"gold": [
+58,
+181,
+262,
+295,
+312,
+317,
+325,
+356,
+441,
+471,
+578,
+644,
+683,
+763,
+807
+],
+"slice": "plain",
+"gold_size": 15
+},
+{
+"q": "cần mua gấp, tôi đang tìm lavabo treo tường vàng đồng",
+"gold": [
+8,
+90,
+159,
+166,
+446,
+527,
+553,
+638,
+713,
+735,
+825,
+880,
+896
+],
+"slice": "verbose",
+"gold_size": 13
+},
+{
+"q": "Xingfa ổ điện cắm phích",
+"gold": [
+235,
+510,
+679,
+703,
+714
+],
+"slice": "brand",
+"gold_size": 5
+},
+{
+"q": "ổ điện cắm phích đen",
+"gold": [
+6,
+16,
+46,
+128,
+219,
+235,
+252,
+308,
+389,
+391,
+438,
+468,
+575,
+758,
+759,
+791,
+865,
+873
+],
+"slice": "plain",
+"gold_size": 18
+},
+{
+"q": "cho công trình, tôi đang tìm vòi chậu rửa trắng",
+"gold": [
+1,
+2,
+10,
+35,
+124,
+143,
+176,
+214,
+221,
+309,
+320,
+362,
+370,
+377,
+398,
+479,
+635,
+655,
+688,
+721,
+801,
+852
+],
+"slice": "verbose",
+"gold_size": 22
+},
+{
+"q": "Rang Dong nút bấm bật tắt đèn",
+"gold": [
+83,
+198,
+449,
+512,
+525,
+534,
+884
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "Vicostone đèn tuýp dài gắn trần ánh sáng trung tính",
+"gold": [
+200,
+670,
+707
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "da op bep den",
+"gold": [
+19,
+104,
+136,
+287,
+328,
+354,
+405,
+565,
+637,
+690,
+691,
+808,
+829,
+856
+],
+"slice": "nodauc",
+"gold_size": 14
+},
+{
+"q": "giá hợp lý, tôi đang tìm đèn sân vườn chống mưa xám ánh sáng trung tính",
+"gold": [
+21,
+118,
+185,
+188,
+267,
+324,
+520
+],
+"slice": "verbose",
+"gold_size": 7
+},
+{
+"q": "Dien Quang đèn sân vườn chống mưa ánh sáng trắng lạnh",
+"gold": [
+28,
+99,
+695
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "loại tốt, tôi đang tìm đèn tuýp dài gắn trần trắng ánh sáng vàng ấm",
+"gold": [
+162,
+675,
+742,
+750
+],
+"slice": "verbose",
+"gold_size": 4
+},
+{
+"q": "cần mua gấp, tôi đang tìm công tắc chiếu sáng trắng",
+"gold": [
+77,
+193,
+263,
+273,
+409,
+445,
+512,
+526,
+536,
+639,
+641,
+681,
+694,
+838,
+840,
+884,
+894
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "den chieu tuong diem nhan xam anh sang trung tinh",
+"gold": [
+218,
+584,
+614,
+768,
+848,
+893
+],
+"slice": "nodauc",
+"gold_size": 6
+},
+{
+"q": "đang cần, tôi đang tìm ổ điện cắm phích trắng",
+"gold": [
+25,
+155,
+161,
+187,
+207,
+239,
+278,
+292,
+307,
+373,
+510,
+515,
+516,
+612,
+625,
+674,
+679,
+703,
+714,
+802
+],
+"slice": "verbose",
+"gold_size": 20
+},
+{
+"q": "lavabo treo tường xám",
+"gold": [
+49,
+67,
+70,
+75,
+172,
+197,
+216,
+374,
+435,
+500,
+539,
+640,
+686,
+878
+],
+"slice": "plain",
+"gold_size": 14
+},
+{
+"q": "đèn hộp mảnh cho hành lang xám ánh sáng trung tính",
+"gold": [
+112,
+186,
+200,
+355,
+358,
+592,
+707,
+783
+],
+"slice": "plain",
+"gold_size": 8
+},
+{
+"q": "o dien cam phich vang dong",
+"gold": [
+50,
+127,
+291,
+367,
+371,
+380,
+402,
+593,
+636,
+648,
+672,
+692,
+794,
+824,
+859,
+883
+],
+"slice": "nodauc",
+"gold_size": 16
+},
+{
+"q": "đèn sân vườn chống mưa vàng đồng ánh sáng trung tính",
+"gold": [
+89,
+191,
+322,
+366,
+381,
+431,
+537,
+555,
+786,
+815
+],
+"slice": "plain",
+"gold_size": 10
+},
+{
+"q": "lavabo treo tuong den",
+"gold": [
+7,
+32,
+105,
+125,
+194,
+347,
+399,
+401,
+486,
+581,
+646,
+765,
+774,
+842
+],
+"slice": "nodauc",
+"gold_size": 14
+},
+{
+"q": "giá hợp lý, tôi đang tìm spotlight trần vàng đồng ánh sáng trắng lạnh",
+"gold": [
+4,
+64,
+69,
+241,
+407,
+696,
+757,
+886,
+890
+],
+"slice": "verbose",
+"gold_size": 9
+},
+{
+"q": "đèn chùm thả xuống bàn ăn vàng đồng ánh sáng trắng lạnh",
+"gold": [
+40,
+164,
+450,
+465,
+628,
+809
+],
+"slice": "plain",
+"gold_size": 6
+},
+{
+"q": "go van cho noi that den",
+"gold": [
+51,
+107,
+140,
+196,
+275,
+508,
+538,
+687,
+749,
+778,
+822,
+853,
+882
+],
+"slice": "nodauc",
+"gold_size": 13
+},
+{
+"q": "bo sen tam nong lanh vang dong",
+"gold": [
+18,
+27,
+91,
+95,
+145,
+147,
+169,
+184,
+225,
+301,
+360,
+454,
+528,
+564,
+604,
+658,
+711,
+738,
+819,
+863,
+897
+],
+"slice": "nodauc",
+"gold_size": 21
+},
+{
+"q": "spotlight tran xam anh sang trung tinh",
+"gold": [
+218,
+584,
+614,
+768,
+848,
+893
+],
+"slice": "nodauc",
+"gold_size": 6
+},
+{
+"q": "đang cần, tôi đang tìm vòi hoa sen tắm đứng xám",
+"gold": [
+58,
+181,
+262,
+295,
+312,
+317,
+325,
+356,
+441,
+471,
+578,
+644,
+683,
+763,
+807
+],
+"slice": "verbose",
+"gold_size": 15
+},
+{
+"q": "den chum tha xuong ban an vang dong anh sang trang lanh",
+"gold": [
+40,
+164,
+450,
+465,
+628,
+809
+],
+"slice": "nodauc",
+"gold_size": 6
+},
+{
+"q": "den tuyp dai gan tran vang dong anh sang trang lanh",
+"gold": [
+423,
+425,
+440,
+453,
+463,
+766
+],
+"slice": "nodauc",
+"gold_size": 6
+},
+{
+"q": "loại tốt, tôi đang tìm nút bấm bật tắt đèn xám",
+"gold": [
+12,
+83,
+148,
+179,
+236,
+248,
+296,
+332,
+392,
+534,
+603,
+706,
+739,
+795,
+820,
+821
+],
+"slice": "verbose",
+"gold_size": 16
+},
+{
+"q": "cong tac chieu sang den",
+"gold": [
+63,
+81,
+121,
+122,
+290,
+329,
+386,
+426,
+495,
+608,
+685,
+746,
+800,
+805,
+834,
+837,
+857,
+868
+],
+"slice": "nodauc",
+"gold_size": 18
+},
+{
+"q": "cần mua gấp, tôi đang tìm đèn sân vườn chống mưa trắng ánh sáng trắng lạnh",
+"gold": [
+117,
+349,
+359,
+556,
+589,
+615,
+632,
+695
+],
+"slice": "verbose",
+"gold_size": 8
+},
+{
+"q": "để lắp đặt, tôi đang tìm mặt bàn đá tự nhiên đen",
+"gold": [
+19,
+104,
+136,
+287,
+328,
+354,
+405,
+565,
+637,
+690,
+691,
+808,
+829,
+856
+],
+"slice": "verbose",
+"gold_size": 14
+},
+{
+"q": "spotlight tran vang dong anh sang trung tinh",
+"gold": [
+98,
+334,
+395,
+855
+],
+"slice": "nodauc",
+"gold_size": 4
+},
+{
+"q": "Toto gỗ ván cho nội thất",
+"gold": [
+297,
+507,
+602
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "den gan tran op tran trang anh sang vang am",
+"gold": [
+48,
+72,
+113,
+137,
+192,
+217,
+281,
+622,
+661,
+715
+],
+"slice": "nodauc",
+"gold_size": 10
+},
+{
+"q": "đèn hộp mảnh cho hành lang vàng đồng ánh sáng vàng ấm",
+"gold": [
+203,
+304,
+551,
+817
+],
+"slice": "plain",
+"gold_size": 4
+},
+{
+"q": "voi hoa sen tam dung den",
+"gold": [
+29,
+39,
+111,
+114,
+135,
+142,
+199,
+274,
+321,
+376,
+393,
+418,
+429,
+473,
+519,
+542,
+549,
+562,
+689,
+725,
+811,
+816,
+861
+],
+"slice": "nodauc",
+"gold_size": 23
+},
+{
+"q": "đèn treo giữa phòng khách vàng đồng ánh sáng trung tính",
+"gold": [
+56,
+249,
+494,
+572,
+847
+],
+"slice": "plain",
+"gold_size": 5
+},
+{
+"q": "Xingfa bệ xí vệ sinh",
+"gold": [
+279,
+298,
+545,
+668,
+743,
+877
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "Rang Dong vòi hoa sen tắm đứng",
+"gold": [
+325,
+393,
+807,
+892
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "An Cuong bộ sen tắm nóng lạnh",
+"gold": [
+29,
+58,
+342,
+439,
+528,
+588
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "đèn chiếu điểm trên trần xám ánh sáng trắng lạnh",
+"gold": [
+116,
+233,
+253,
+488,
+498,
+540,
+560,
+597,
+748,
+845
+],
+"slice": "plain",
+"gold_size": 10
+},
+{
+"q": "cần mua gấp, tôi đang tìm tấm gỗ ép làm tủ trắng",
+"gold": [
+62,
+101,
+327,
+348,
+415,
+455,
+529,
+576,
+579,
+669,
+700,
+803
+],
+"slice": "verbose",
+"gold_size": 12
+},
+{
+"q": "bo sen tam nong lanh trang",
+"gold": [
+38,
+80,
+94,
+120,
+189,
+340,
+342,
+388,
+439,
+464,
+588,
+616,
+617,
+643,
+665,
+708,
+718,
+858,
+892
+],
+"slice": "nodauc",
+"gold_size": 19
+},
+{
+"q": "Dien Quang downlight âm trần ánh sáng vàng ấm",
+"gold": [
+72,
+152,
+178,
+661
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "công tắc chiếu sáng trắng",
+"gold": [
+77,
+193,
+263,
+273,
+409,
+445,
+512,
+526,
+536,
+639,
+641,
+681,
+694,
+838,
+840,
+884,
+894
+],
+"slice": "plain",
+"gold_size": 17
+},
+{
+"q": "den gan tran op tran vang dong anh sang trung tinh",
+"gold": [
+82,
+222,
+310,
+550,
+599,
+680,
+724,
+728
+],
+"slice": "nodauc",
+"gold_size": 8
+},
+{
+"q": "be xi ve sinh xam",
+"gold": [
+52,
+73,
+100,
+157,
+163,
+271,
+316,
+319,
+344,
+448,
+459,
+469,
+505,
+545,
+624,
+650,
+769,
+792,
+832,
+877
+],
+"slice": "nodauc",
+"gold_size": 20
+},
+{
+"q": "đèn tuýp dài gắn trần trắng ánh sáng trắng lạnh",
+"gold": [
+36,
+256,
+259,
+503,
+518,
+595,
+787
+],
+"slice": "plain",
+"gold_size": 7
+},
+{
+"q": "Kohn vòi hoa sen tắm đứng",
+"gold": [
+111,
+356,
+617,
+643,
+683,
+708,
+718,
+863,
+897
+],
+"slice": "brand",
+"gold_size": 9
+},
+{
+"q": "đang cần, tôi đang tìm công tắc chiếu sáng trắng",
+"gold": [
+77,
+193,
+263,
+273,
+409,
+445,
+512,
+526,
+536,
+639,
+641,
+681,
+694,
+838,
+840,
+884,
+894
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "da op bep trang",
+"gold": [
+284,
+343,
+417,
+433,
+460,
+493,
+501,
+587,
+623,
+676,
+697,
+722,
+756,
+810,
+869,
+889,
+895
+],
+"slice": "nodauc",
+"gold_size": 17
+},
+{
+"q": "Vicostone mặt bàn đá tự nhiên",
+"gold": [
+54,
+71,
+372,
+433,
+565,
+690,
+843
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "den gan tran op tran trang anh sang trung tinh",
+"gold": [
+139,
+158,
+265,
+458
+],
+"slice": "nodauc",
+"gold_size": 4
+},
+{
+"q": "den gan tran op tran vang dong anh sang vang am",
+"gold": [
+152,
+171,
+174,
+178,
+345,
+382,
+390,
+404,
+443,
+492,
+649
+],
+"slice": "nodauc",
+"gold_size": 11
+},
+{
+"q": "cho công trình, tôi đang tìm đèn sân vườn chống mưa vàng đồng ánh sáng trắng lạnh",
+"gold": [
+531,
+631,
+872
+],
+"slice": "verbose",
+"gold_size": 3
+},
+{
+"q": "cho công trình, tôi đang tìm đèn trụ cổng vàng đồng ánh sáng trung tính",
+"gold": [
+89,
+191,
+322,
+366,
+381,
+431,
+537,
+555,
+786,
+815
+],
+"slice": "verbose",
+"gold_size": 10
+},
+{
+"q": "Panasonic đá ốp bếp",
+"gold": [
+17,
+33,
+205,
+227,
+676,
+779,
+808,
+810,
+869
+],
+"slice": "brand",
+"gold_size": 9
+},
+{
+"q": "Philips nút bấm bật tắt đèn",
+"gold": [
+238,
+288,
+426,
+834,
+857,
+868
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "toilet cho phong tam xam",
+"gold": [
+52,
+73,
+100,
+157,
+163,
+271,
+316,
+319,
+344,
+448,
+459,
+469,
+505,
+545,
+624,
+650,
+769,
+792,
+832,
+877
+],
+"slice": "nodauc",
+"gold_size": 20
+},
+{
+"q": "voi chau rua den",
+"gold": [
+130,
+190,
+229,
+268,
+300,
+400,
+424,
+457,
+472,
+586,
+609,
+621,
+645,
+664,
+677,
+699,
+867
+],
+"slice": "nodauc",
+"gold_size": 17
+},
+{
+"q": "cần mua gấp, tôi đang tìm đèn chiếu tường điểm nhấn đen ánh sáng vàng ấm",
+"gold": [
+86,
+240,
+509,
+590,
+667,
+790,
+862
+],
+"slice": "verbose",
+"gold_size": 7
+},
+{
+"q": "Panasonic đế cắm điện âm tường",
+"gold": [
+292,
+308,
+369,
+515,
+516,
+759
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "đèn sân vườn chống mưa trắng ánh sáng vàng ấm",
+"gold": [
+59,
+244,
+337,
+427
+],
+"slice": "plain",
+"gold_size": 4
+},
+{
+"q": "Kohn vòi nước cho chậu rửa mặt",
+"gold": [
+190,
+678,
+752
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "Inax đèn gắn trần ốp trần ánh sáng vàng ấm",
+"gold": [
+345,
+346,
+649
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "đèn tuýp dài gắn trần vàng đồng ánh sáng trắng lạnh",
+"gold": [
+423,
+425,
+440,
+453,
+463,
+766
+],
+"slice": "plain",
+"gold_size": 6
+},
+{
+"q": "den chieu diem tren tran den anh sang trang lanh",
+"gold": [
+88,
+282,
+654
+],
+"slice": "nodauc",
+"gold_size": 3
+},
+{
+"q": "Dien Quang tấm gỗ ép làm tủ",
+"gold": [
+84,
+196,
+269,
+275,
+361,
+767,
+803
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "đèn sân vườn chống mưa vàng đồng ánh sáng vàng ấm",
+"gold": [
+60,
+85,
+146,
+149,
+368,
+716,
+732,
+733
+],
+"slice": "plain",
+"gold_size": 8
+},
+{
+"q": "đế cắm điện âm tường trắng",
+"gold": [
+25,
+155,
+161,
+187,
+207,
+239,
+278,
+292,
+307,
+373,
+510,
+515,
+516,
+612,
+625,
+674,
+679,
+703,
+714,
+802
+],
+"slice": "plain",
+"gold_size": 20
+},
+{
+"q": "Xingfa đèn chiếu tường điểm nhấn ánh sáng trắng lạnh",
+"gold": [
+92,
+209,
+241,
+757
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "downlight am tran vang dong anh sang vang am",
+"gold": [
+152,
+171,
+174,
+178,
+345,
+382,
+390,
+404,
+443,
+492,
+649
+],
+"slice": "nodauc",
+"gold_size": 11
+},
+{
+"q": "voi chau rua trang",
+"gold": [
+1,
+2,
+10,
+35,
+124,
+143,
+176,
+214,
+221,
+309,
+320,
+362,
+370,
+377,
+398,
+479,
+635,
+655,
+688,
+721,
+801,
+852
+],
+"slice": "nodauc",
+"gold_size": 22
+},
+{
+"q": "Toto bệ xí vệ sinh",
+"gold": [
+173,
+505,
+524,
+548,
+698,
+784,
+836
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "giá hợp lý, tôi đang tìm công tắc chiếu sáng vàng đồng",
+"gold": [
+14,
+79,
+198,
+232,
+238,
+242,
+288,
+331,
+375,
+422,
+449,
+491,
+525,
+719,
+747,
+796,
+891
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "Panasonic đèn chiếu điểm trên trần ánh sáng vàng ấm",
+"gold": [
+48,
+192,
+715
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "Panasonic đèn treo giữa phòng khách ánh sáng trắng lạnh",
+"gold": [
+66,
+723,
+809
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "đang cần, tôi đang tìm đá ốp bếp trắng",
+"gold": [
+284,
+343,
+417,
+433,
+460,
+493,
+501,
+587,
+623,
+676,
+697,
+722,
+756,
+810,
+869,
+889,
+895
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "Dien Quang đèn tuýp dài gắn trần ánh sáng vàng ấm",
+"gold": [
+202,
+551,
+817
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "bộ sen tắm nóng lạnh đen",
+"gold": [
+29,
+39,
+111,
+114,
+135,
+142,
+199,
+274,
+321,
+376,
+393,
+418,
+429,
+473,
+519,
+542,
+549,
+562,
+689,
+725,
+811,
+816,
+861
+],
+"slice": "plain",
+"gold_size": 23
+},
+{
+"q": "cần mua gấp, tôi đang tìm đế cắm điện âm tường vàng đồng",
+"gold": [
+50,
+127,
+291,
+367,
+371,
+380,
+402,
+593,
+636,
+648,
+672,
+692,
+794,
+824,
+859,
+883
+],
+"slice": "verbose",
+"gold_size": 16
+},
+{
+"q": "đèn chiếu tường điểm nhấn đen ánh sáng trung tính",
+"gold": [
+42,
+396,
+583,
+607,
+731,
+740,
+777
+],
+"slice": "plain",
+"gold_size": 7
+},
+{
+"q": "den hop manh cho hanh lang trang anh sang trung tinh",
+"gold": [
+24,
+126,
+204,
+451,
+570,
+601,
+670,
+782,
+835,
+885
+],
+"slice": "nodauc",
+"gold_size": 10
+},
+{
+"q": "đèn chùm thả xuống bàn ăn xám ánh sáng trung tính",
+"gold": [
+103,
+481,
+541,
+702,
+720,
+813
+],
+"slice": "plain",
+"gold_size": 6
+},
+{
+"q": "để lắp đặt, tôi đang tìm nút bấm bật tắt đèn trắng",
+"gold": [
+77,
+193,
+263,
+273,
+409,
+445,
+512,
+526,
+536,
+639,
+641,
+681,
+694,
+838,
+840,
+884,
+894
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "giá hợp lý, tôi đang tìm đèn treo giữa phòng khách đen ánh sáng trung tính",
+"gold": [
+108,
+180,
+223,
+247,
+260,
+812,
+844
+],
+"slice": "verbose",
+"gold_size": 7
+},
+{
+"q": "tấm gỗ ép làm tủ đen",
+"gold": [
+51,
+107,
+140,
+196,
+275,
+508,
+538,
+687,
+749,
+778,
+822,
+853,
+882
+],
+"slice": "plain",
+"gold_size": 13
+},
+{
+"q": "loại tốt, tôi đang tìm vòi chậu rửa đen",
+"gold": [
+130,
+190,
+229,
+268,
+300,
+400,
+424,
+457,
+472,
+586,
+609,
+621,
+645,
+664,
+677,
+699,
+867
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "voi nuoc cho chau rua mat trang",
+"gold": [
+1,
+2,
+10,
+35,
+124,
+143,
+176,
+214,
+221,
+309,
+320,
+362,
+370,
+377,
+398,
+479,
+635,
+655,
+688,
+721,
+801,
+852
+],
+"slice": "nodauc",
+"gold_size": 22
+},
+{
+"q": "đèn trụ cổng trắng ánh sáng trung tính",
+"gold": [
+167,
+213,
+294,
+335,
+352,
+428,
+466,
+876
+],
+"slice": "plain",
+"gold_size": 8
+},
+{
+"q": "đèn treo giữa phòng khách đen ánh sáng trắng lạnh",
+"gold": [
+66,
+87,
+411,
+532,
+723
+],
+"slice": "plain",
+"gold_size": 5
+},
+{
+"q": "giá hợp lý, tôi đang tìm toilet cho phòng tắm trắng",
+"gold": [
+23,
+61,
+134,
+144,
+151,
+160,
+183,
+245,
+250,
+535,
+548,
+629,
+698,
+737,
+760,
+797,
+823,
+888,
+899
+],
+"slice": "verbose",
+"gold_size": 19
+},
+{
+"q": "loại tốt, tôi đang tìm toilet cho phòng tắm trắng",
+"gold": [
+23,
+61,
+134,
+144,
+151,
+160,
+183,
+245,
+250,
+535,
+548,
+629,
+698,
+737,
+760,
+797,
+823,
+888,
+899
+],
+"slice": "verbose",
+"gold_size": 19
+},
+{
+"q": "để lắp đặt, tôi đang tìm vòi chậu rửa đen",
+"gold": [
+130,
+190,
+229,
+268,
+300,
+400,
+424,
+457,
+472,
+586,
+609,
+621,
+645,
+664,
+677,
+699,
+867
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "Xingfa vòi chậu rửa",
+"gold": [
+2,
+214,
+300,
+302,
+457,
+472,
+744,
+867
+],
+"slice": "brand",
+"gold_size": 8
+},
+{
+"q": "Inax toilet cho phòng tắm",
+"gold": [
+132,
+134,
+170,
+448,
+624,
+629,
+737
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "giá hợp lý, tôi đang tìm toilet cho phòng tắm xám",
+"gold": [
+52,
+73,
+100,
+157,
+163,
+271,
+316,
+319,
+344,
+448,
+459,
+469,
+505,
+545,
+624,
+650,
+769,
+792,
+832,
+877
+],
+"slice": "verbose",
+"gold_size": 20
+},
+{
+"q": "Panasonic spotlight trần ánh sáng trung tính",
+"gold": [
+584,
+740,
+751,
+871
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "Rang Dong chậu rửa mặt đặt trên bàn đá",
+"gold": [
+49,
+611,
+686,
+713,
+825,
+842
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "den roi tranh den anh sang trung tinh",
+"gold": [
+42,
+396,
+583,
+607,
+731,
+740,
+777
+],
+"slice": "nodauc",
+"gold_size": 7
+},
+{
+"q": "cần mua gấp, tôi đang tìm nút bấm bật tắt đèn vàng đồng",
+"gold": [
+14,
+79,
+198,
+232,
+238,
+242,
+288,
+331,
+375,
+422,
+449,
+491,
+525,
+719,
+747,
+796,
+891
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "Dien Quang vòi nước cho chậu rửa mặt",
+"gold": [
+57,
+96,
+176,
+221,
+377,
+573,
+582
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "đế cắm điện âm tường đen",
+"gold": [
+6,
+16,
+46,
+128,
+219,
+235,
+252,
+308,
+389,
+391,
+438,
+468,
+575,
+758,
+759,
+791,
+865,
+873
+],
+"slice": "plain",
+"gold_size": 18
+},
+{
+"q": "lavabo treo tường vàng đồng",
+"gold": [
+8,
+90,
+159,
+166,
+446,
+527,
+553,
+638,
+713,
+735,
+825,
+880,
+896
+],
+"slice": "plain",
+"gold_size": 13
+},
+{
+"q": "Inax đèn chùm thả xuống bàn ăn ánh sáng trắng lạnh",
+"gold": [
+87,
+311,
+554,
+727
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "loại tốt, tôi đang tìm vòi nước cho chậu rửa mặt đen",
+"gold": [
+130,
+190,
+229,
+268,
+300,
+400,
+424,
+457,
+472,
+586,
+609,
+621,
+645,
+664,
+677,
+699,
+867
+],
+"slice": "verbose",
+"gold_size": 17
+},
+{
+"q": "đèn rọi tranh trắng ánh sáng vàng ấm",
+"gold": [
+206,
+210,
+280,
+351,
+384,
+406,
+585,
+651,
+717,
+753,
+770,
+850,
+870
+],
+"slice": "plain",
+"gold_size": 13
+},
+{
+"q": "nut bam bat tat den den",
+"gold": [
+63,
+81,
+121,
+122,
+290,
+329,
+386,
+426,
+495,
+608,
+685,
+746,
+800,
+805,
+834,
+837,
+857,
+868
+],
+"slice": "nodauc",
+"gold_size": 18
+},
+{
+"q": "de cam dien am tuong xam",
+"gold": [
+13,
+26,
+93,
+165,
+286,
+369,
+414,
+442,
+482,
+552,
+569,
+605,
+793
+],
+"slice": "nodauc",
+"gold_size": 13
+},
+{
+"q": "toilet cho phòng tắm đen",
+"gold": [
+132,
+170,
+326,
+408,
+413,
+480,
+504,
+563,
+610,
+668,
+734,
+784,
+785,
+830,
+836
+],
+"slice": "plain",
+"gold_size": 15
+},
+{
+"q": "den san vuon chong mua xam anh sang trung tinh",
+"gold": [
+21,
+118,
+185,
+188,
+267,
+324,
+520
+],
+"slice": "nodauc",
+"gold_size": 7
+},
+{
+"q": "lavabo treo tuong vang dong",
+"gold": [
+8,
+90,
+159,
+166,
+446,
+527,
+553,
+638,
+713,
+735,
+825,
+880,
+896
+],
+"slice": "nodauc",
+"gold_size": 13
+},
+{
+"q": "den tru cong den anh sang trang lanh",
+"gold": [
+99,
+383,
+420,
+704
+],
+"slice": "nodauc",
+"gold_size": 4
+},
+{
+"q": "đèn trụ cổng đen ánh sáng vàng ấm",
+"gold": [
+153,
+470,
+530,
+798,
+898
+],
+"slice": "plain",
+"gold_size": 5
+},
+{
+"q": "giá hợp lý, tôi đang tìm mặt bàn đá tự nhiên vàng đồng",
+"gold": [
+17,
+47,
+141,
+205,
+237,
+246,
+261,
+276,
+333,
+372,
+523,
+568,
+656,
+781,
+818,
+843
+],
+"slice": "verbose",
+"gold_size": 16
+},
+{
+"q": "đang cần, tôi đang tìm vòi nước cho chậu rửa mặt trắng",
+"gold": [
+1,
+2,
+10,
+35,
+124,
+143,
+176,
+214,
+221,
+309,
+320,
+362,
+370,
+377,
+398,
+479,
+635,
+655,
+688,
+721,
+801,
+852
+],
+"slice": "verbose",
+"gold_size": 22
+},
+{
+"q": "Hafele đá ốp bếp",
+"gold": [
+110,
+354,
+587,
+623
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "vòi chậu rửa trắng",
+"gold": [
+1,
+2,
+10,
+35,
+124,
+143,
+176,
+214,
+221,
+309,
+320,
+362,
+370,
+377,
+398,
+479,
+635,
+655,
+688,
+721,
+801,
+852
+],
+"slice": "plain",
+"gold_size": 22
+},
+{
+"q": "giá hợp lý, tôi đang tìm spotlight trần trắng ánh sáng vàng ấm",
+"gold": [
+206,
+210,
+280,
+351,
+384,
+406,
+585,
+651,
+717,
+753,
+770,
+850,
+870
+],
+"slice": "verbose",
+"gold_size": 13
+},
+{
+"q": "vòi hoa sen tắm đứng trắng",
+"gold": [
+38,
+80,
+94,
+120,
+189,
+340,
+342,
+388,
+439,
+464,
+588,
+616,
+617,
+643,
+665,
+708,
+718,
+858,
+892
+],
+"slice": "plain",
+"gold_size": 19
+},
+{
+"q": "Dien Quang đèn trụ cổng ánh sáng trung tính",
+"gold": [
+322,
+335,
+350,
+352,
+431,
+474
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "để lắp đặt, tôi đang tìm đèn chiếu tường điểm nhấn trắng ánh sáng trung tính",
+"gold": [
+133,
+211,
+416,
+580,
+657,
+751,
+771,
+871
+],
+"slice": "verbose",
+"gold_size": 8
+},
+{
+"q": "đèn chiếu điểm trên trần đen ánh sáng trung tính",
+"gold": [
+5,
+318,
+412,
+485,
+652
+],
+"slice": "plain",
+"gold_size": 5
+},
+{
+"q": "den chum tha xuong ban an xam anh sang vang am",
+"gold": [
+74,
+131,
+487
+],
+"slice": "nodauc",
+"gold_size": 3
+},
+{
+"q": "Philips đèn sân vườn chống mưa ánh sáng trắng lạnh",
+"gold": [
+420,
+632,
+704
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "voi hoa sen tam dung xam",
+"gold": [
+58,
+181,
+262,
+295,
+312,
+317,
+325,
+356,
+441,
+471,
+578,
+644,
+683,
+763,
+807
+],
+"slice": "nodauc",
+"gold_size": 15
+},
+{
+"q": "đèn chiếu điểm trên trần trắng ánh sáng vàng ấm",
+"gold": [
+48,
+72,
+113,
+137,
+192,
+217,
+281,
+622,
+661,
+715
+],
+"slice": "plain",
+"gold_size": 10
+},
+{
+"q": "Inax chậu rửa mặt đặt trên bàn đá",
+"gold": [
+75,
+194,
+527
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "Dien Quang đèn hộp mảnh cho hành lang ánh sáng vàng ấm",
+"gold": [
+202,
+551,
+817
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "Panasonic đèn gắn trần ốp trần ánh sáng trắng lạnh",
+"gold": [
+272,
+488,
+748,
+761
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "Toto đèn chùm thả xuống bàn ăn ánh sáng trung tính",
+"gold": [
+78,
+223,
+813,
+847
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "đèn sân vườn chống mưa đen ánh sáng trắng lạnh",
+"gold": [
+99,
+383,
+420,
+704
+],
+"slice": "plain",
+"gold_size": 4
+},
+{
+"q": "vòi nước cho chậu rửa mặt trắng",
+"gold": [
+1,
+2,
+10,
+35,
+124,
+143,
+176,
+214,
+221,
+309,
+320,
+362,
+370,
+377,
+398,
+479,
+635,
+655,
+688,
+721,
+801,
+852
+],
+"slice": "plain",
+"gold_size": 22
+},
+{
+"q": "loại tốt, tôi đang tìm lavabo treo tường trắng",
+"gold": [
+45,
+115,
+154,
+258,
+357,
+379,
+385,
+419,
+461,
+475,
+611,
+663
+],
+"slice": "verbose",
+"gold_size": 12
+},
+{
+"q": "đèn sân vườn chống mưa vàng đồng ánh sáng trắng lạnh",
+"gold": [
+531,
+631,
+872
+],
+"slice": "plain",
+"gold_size": 3
+},
+{
+"q": "loại tốt, tôi đang tìm vòi chậu rửa trắng",
+"gold": [
+1,
+2,
+10,
+35,
+124,
+143,
+176,
+214,
+221,
+309,
+320,
+362,
+370,
+377,
+398,
+479,
+635,
+655,
+688,
+721,
+801,
+852
+],
+"slice": "verbose",
+"gold_size": 22
+},
+{
+"q": "Philips mặt bàn đá tự nhiên",
+"gold": [
+405,
+501,
+568,
+829,
+889
+],
+"slice": "brand",
+"gold_size": 5
+},
+{
+"q": "mặt bàn đá tự nhiên vàng đồng",
+"gold": [
+17,
+47,
+141,
+205,
+237,
+246,
+261,
+276,
+333,
+372,
+523,
+568,
+656,
+781,
+818,
+843
+],
+"slice": "plain",
+"gold_size": 16
+},
+{
+"q": "da op bep xam",
+"gold": [
+31,
+33,
+54,
+71,
+110,
+138,
+227,
+330,
+378,
+410,
+478,
+497,
+506,
+591,
+619,
+754,
+773,
+779
+],
+"slice": "nodauc",
+"gold_size": 18
+},
+{
+"q": "tấm gỗ ép làm tủ vàng đồng",
+"gold": [
+84,
+109,
+257,
+361,
+363,
+483,
+490,
+507,
+543,
+602,
+633,
+660,
+745,
+767,
+799,
+839,
+881
+],
+"slice": "plain",
+"gold_size": 17
+},
+{
+"q": "giá hợp lý, tôi đang tìm downlight âm trần đen ánh sáng trung tính",
+"gold": [
+5,
+318,
+412,
+485,
+652
+],
+"slice": "verbose",
+"gold_size": 5
+},
+{
+"q": "đang cần, tôi đang tìm đèn chiếu điểm trên trần vàng đồng ánh sáng vàng ấm",
+"gold": [
+152,
+171,
+174,
+178,
+345,
+382,
+390,
+404,
+443,
+492,
+649
+],
+"slice": "verbose",
+"gold_size": 11
+},
+{
+"q": "mặt bàn đá tự nhiên xám",
+"gold": [
+31,
+33,
+54,
+71,
+110,
+138,
+227,
+330,
+378,
+410,
+478,
+497,
+506,
+591,
+619,
+754,
+773,
+779
+],
+"slice": "plain",
+"gold_size": 18
+},
+{
+"q": "Vicostone gỗ ván cho nội thất",
+"gold": [
+101,
+140,
+212,
+257,
+415,
+853
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "cho công trình, tôi đang tìm đèn tuýp dài gắn trần xám ánh sáng trung tính",
+"gold": [
+112,
+186,
+200,
+355,
+358,
+592,
+707,
+783
+],
+"slice": "verbose",
+"gold_size": 8
+},
+{
+"q": "den treo giua phong khach den anh sang trang lanh",
+"gold": [
+66,
+87,
+411,
+532,
+723
+],
+"slice": "nodauc",
+"gold_size": 5
+},
+{
+"q": "den chieu tuong diem nhan trang anh sang trung tinh",
+"gold": [
+133,
+211,
+416,
+580,
+657,
+751,
+771,
+871
+],
+"slice": "nodauc",
+"gold_size": 8
+},
+{
+"q": "Vicostone nút bấm bật tắt đèn",
+"gold": [
+248,
+273,
+409,
+603,
+608,
+821,
+894
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "den chieu tuong diem nhan trang anh sang trang lanh",
+"gold": [
+209,
+220,
+462,
+606
+],
+"slice": "nodauc",
+"gold_size": 4
+},
+{
+"q": "đèn tuýp dài gắn trần xám ánh sáng trung tính",
+"gold": [
+112,
+186,
+200,
+355,
+358,
+592,
+707,
+783
+],
+"slice": "plain",
+"gold_size": 8
+},
+{
+"q": "cho công trình, tôi đang tìm đèn rọi tranh trắng ánh sáng trắng lạnh",
+"gold": [
+209,
+220,
+462,
+606
+],
+"slice": "verbose",
+"gold_size": 4
+},
+{
+"q": "đèn gắn trần ốp trần xám ánh sáng trắng lạnh",
+"gold": [
+116,
+233,
+253,
+488,
+498,
+540,
+560,
+597,
+748,
+845
+],
+"slice": "plain",
+"gold_size": 10
+},
+{
+"q": "đá ốp bếp trắng",
+"gold": [
+284,
+343,
+417,
+433,
+460,
+493,
+501,
+587,
+623,
+676,
+697,
+722,
+756,
+810,
+869,
+889,
+895
+],
+"slice": "plain",
+"gold_size": 17
+},
+{
+"q": "toilet cho phong tam trang",
+"gold": [
+23,
+61,
+134,
+144,
+151,
+160,
+183,
+245,
+250,
+535,
+548,
+629,
+698,
+737,
+760,
+797,
+823,
+888,
+899
+],
+"slice": "nodauc",
+"gold_size": 19
+},
+{
+"q": "loại tốt, tôi đang tìm đèn chiếu điểm trên trần đen ánh sáng vàng ấm",
+"gold": [
+195,
+671,
+682,
+804
+],
+"slice": "verbose",
+"gold_size": 4
+},
+{
+"q": "bo sen tam nong lanh den",
+"gold": [
+29,
+39,
+111,
+114,
+135,
+142,
+199,
+274,
+321,
+376,
+393,
+418,
+429,
+473,
+519,
+542,
+549,
+562,
+689,
+725,
+811,
+816,
+861
+],
+"slice": "nodauc",
+"gold_size": 23
+},
+{
+"q": "voi chau rua vang dong",
+"gold": [
+22,
+37,
+251,
+266,
+477,
+489,
+511,
+533,
+626,
+684,
+709,
+741,
+744,
+776
+],
+"slice": "nodauc",
+"gold_size": 14
+},
+{
+"q": "công tắc chiếu sáng đen",
+"gold": [
+63,
+81,
+121,
+122,
+290,
+329,
+386,
+426,
+495,
+608,
+685,
+746,
+800,
+805,
+834,
+837,
+857,
+868
+],
+"slice": "plain",
+"gold_size": 18
+},
+{
+"q": "toilet cho phòng tắm trắng",
+"gold": [
+23,
+61,
+134,
+144,
+151,
+160,
+183,
+245,
+250,
+535,
+548,
+629,
+698,
+737,
+760,
+797,
+823,
+888,
+899
+],
+"slice": "plain",
+"gold_size": 19
+},
+{
+"q": "o dien cam phich den",
+"gold": [
+6,
+16,
+46,
+128,
+219,
+235,
+252,
+308,
+389,
+391,
+438,
+468,
+575,
+758,
+759,
+791,
+865,
+873
+],
+"slice": "nodauc",
+"gold_size": 18
+},
+{
+"q": "để lắp đặt, tôi đang tìm đèn sân vườn chống mưa đen ánh sáng trắng lạnh",
+"gold": [
+99,
+383,
+420,
+704
+],
+"slice": "verbose",
+"gold_size": 4
+},
+{
+"q": "bộ sen tắm nóng lạnh vàng đồng",
+"gold": [
+18,
+27,
+91,
+95,
+145,
+147,
+169,
+184,
+225,
+301,
+360,
+454,
+528,
+564,
+604,
+658,
+711,
+738,
+819,
+863,
+897
+],
+"slice": "plain",
+"gold_size": 21
+},
+{
+"q": "den tru cong trang anh sang trung tinh",
+"gold": [
+167,
+213,
+294,
+335,
+352,
+428,
+466,
+876
+],
+"slice": "nodauc",
+"gold_size": 8
+},
+{
+"q": "Hafele mặt bàn đá tự nhiên",
+"gold": [
+110,
+354,
+587,
+623
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "Kohn mặt bàn đá tự nhiên",
+"gold": [
+31,
+276,
+637,
+691,
+697,
+754,
+856
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "tam go ep lam tu vang dong",
+"gold": [
+84,
+109,
+257,
+361,
+363,
+483,
+490,
+507,
+543,
+602,
+633,
+660,
+745,
+767,
+799,
+839,
+881
+],
+"slice": "nodauc",
+"gold_size": 17
+},
+{
+"q": "đèn chiếu điểm trên trần vàng đồng ánh sáng trắng lạnh",
+"gold": [
+68,
+264,
+272,
+303,
+306,
+761
+],
+"slice": "plain",
+"gold_size": 6
+},
+{
+"q": "giá hợp lý, tôi đang tìm nút bấm bật tắt đèn xám",
+"gold": [
+12,
+83,
+148,
+179,
+236,
+248,
+296,
+332,
+392,
+534,
+603,
+706,
+739,
+795,
+820,
+821
+],
+"slice": "verbose",
+"gold_size": 16
+},
+{
+"q": "loại tốt, tôi đang tìm bệ xí vệ sinh xám",
+"gold": [
+52,
+73,
+100,
+157,
+163,
+271,
+316,
+319,
+344,
+448,
+459,
+469,
+505,
+545,
+624,
+650,
+769,
+792,
+832,
+877
+],
+"slice": "verbose",
+"gold_size": 20
+},
+{
+"q": "cho công trình, tôi đang tìm bệ xí vệ sinh trắng",
+"gold": [
+23,
+61,
+134,
+144,
+151,
+160,
+183,
+245,
+250,
+535,
+548,
+629,
+698,
+737,
+760,
+797,
+823,
+888,
+899
+],
+"slice": "verbose",
+"gold_size": 19
+},
+{
+"q": "lavabo treo tuong trang",
+"gold": [
+45,
+115,
+154,
+258,
+357,
+379,
+385,
+419,
+461,
+475,
+611,
+663
+],
+"slice": "nodauc",
+"gold_size": 12
+},
+{
+"q": "loại tốt, tôi đang tìm nút bấm bật tắt đèn đen",
+"gold": [
+63,
+81,
+121,
+122,
+290,
+329,
+386,
+426,
+495,
+608,
+685,
+746,
+800,
+805,
+834,
+837,
+857,
+868
+],
+"slice": "verbose",
+"gold_size": 18
+},
+{
+"q": "den chum tha xuong ban an trang anh sang vang am",
+"gold": [
+41,
+437,
+467,
+618,
+841,
+879
+],
+"slice": "nodauc",
+"gold_size": 6
+},
+{
+"q": "Inax bệ xí vệ sinh",
+"gold": [
+132,
+134,
+170,
+448,
+624,
+629,
+737
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "đang cần, tôi đang tìm ổ điện cắm phích xám",
+"gold": [
+13,
+26,
+93,
+165,
+286,
+369,
+414,
+442,
+482,
+552,
+569,
+605,
+793
+],
+"slice": "verbose",
+"gold_size": 13
+},
+{
+"q": "Kohn công tắc chiếu sáng",
+"gold": [
+121,
+193,
+332,
+422,
+746,
+747
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "Caesar ổ điện cắm phích",
+"gold": [
+13,
+371,
+402,
+414,
+552,
+793
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "Dien Quang vòi hoa sen tắm đứng",
+"gold": [
+27,
+91,
+199,
+317,
+321,
+464,
+519,
+542,
+644,
+811
+],
+"slice": "brand",
+"gold_size": 10
+},
+{
+"q": "voi nuoc cho chau rua mat xam",
+"gold": [
+57,
+96,
+123,
+302,
+397,
+432,
+436,
+522,
+573,
+582,
+634,
+678,
+752,
+788,
+827,
+866
+],
+"slice": "nodauc",
+"gold_size": 16
+},
+{
+"q": "mat ban da tu nhien den",
+"gold": [
+19,
+104,
+136,
+287,
+328,
+354,
+405,
+565,
+637,
+690,
+691,
+808,
+829,
+856
+],
+"slice": "nodauc",
+"gold_size": 14
+},
+{
+"q": "An Cuong chậu rửa mặt đặt trên bàn đá",
+"gold": [
+7,
+461,
+553,
+646
+],
+"slice": "brand",
+"gold_size": 4
+},
+{
+"q": "voi hoa sen tam dung vang dong",
+"gold": [
+18,
+27,
+91,
+95,
+145,
+147,
+169,
+184,
+225,
+301,
+360,
+454,
+528,
+564,
+604,
+658,
+711,
+738,
+819,
+863,
+897
+],
+"slice": "nodauc",
+"gold_size": 21
+},
+{
+"q": "Inax lavabo treo tường",
+"gold": [
+75,
+194,
+527
+],
+"slice": "brand",
+"gold_size": 3
+},
+{
+"q": "Caesar gỗ ván cho nội thất",
+"gold": [
+51,
+107,
+348,
+363,
+455,
+598,
+745
+],
+"slice": "brand",
+"gold_size": 7
+},
+{
+"q": "spotlight tran trang anh sang trang lanh",
+"gold": [
+209,
+220,
+462,
+606
+],
+"slice": "nodauc",
+"gold_size": 4
+},
+{
+"q": "Toto đế cắm điện âm tường",
+"gold": [
+26,
+239,
+291,
+367,
+802,
+883
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "den treo giua phong khach vang dong anh sang vang am",
+"gold": [
+20,
+76,
+129,
+270,
+755
+],
+"slice": "nodauc",
+"gold_size": 5
+},
+{
+"q": "Panasonic vòi nước cho chậu rửa mặt",
+"gold": [
+123,
+251,
+309,
+370,
+397,
+400,
+533,
+586,
+699,
+709,
+866
+],
+"slice": "brand",
+"gold_size": 11
+},
+{
+"q": "voi nuoc cho chau rua mat den",
+"gold": [
+130,
+190,
+229,
+268,
+300,
+400,
+424,
+457,
+472,
+586,
+609,
+621,
+645,
+664,
+677,
+699,
+867
+],
+"slice": "nodauc",
+"gold_size": 17
+},
+{
+"q": "cần mua gấp, tôi đang tìm bệ xí vệ sinh xám",
+"gold": [
+52,
+73,
+100,
+157,
+163,
+271,
+316,
+319,
+344,
+448,
+459,
+469,
+505,
+545,
+624,
+650,
+769,
+792,
+832,
+877
+],
+"slice": "verbose",
+"gold_size": 20
+},
+{
+"q": "cho công trình, tôi đang tìm gỗ ván cho nội thất trắng",
+"gold": [
+62,
+101,
+327,
+348,
+415,
+455,
+529,
+576,
+579,
+669,
+700,
+803
+],
+"slice": "verbose",
+"gold_size": 12
+},
+{
+"q": "mặt bàn đá tự nhiên đen",
+"gold": [
+19,
+104,
+136,
+287,
+328,
+354,
+405,
+565,
+637,
+690,
+691,
+808,
+829,
+856
+],
+"slice": "plain",
+"gold_size": 14
+},
+{
+"q": "Dien Quang đèn sân vườn chống mưa ánh sáng trung tính",
+"gold": [
+322,
+335,
+350,
+352,
+431,
+474
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "da op bep vang dong",
+"gold": [
+17,
+47,
+141,
+205,
+237,
+246,
+261,
+276,
+333,
+372,
+523,
+568,
+656,
+781,
+818,
+843
+],
+"slice": "nodauc",
+"gold_size": 16
+},
+{
+"q": "downlight am tran den anh sang trung tinh",
+"gold": [
+5,
+318,
+412,
+485,
+652
+],
+"slice": "nodauc",
+"gold_size": 5
+},
+{
+"q": "đang cần, tôi đang tìm đèn chiếu tường điểm nhấn trắng ánh sáng trắng lạnh",
+"gold": [
+209,
+220,
+462,
+606
+],
+"slice": "verbose",
+"gold_size": 4
+},
+{
+"q": "chậu rửa mặt đặt trên bàn đá vàng đồng",
+"gold": [
+8,
+90,
+159,
+166,
+446,
+527,
+553,
+638,
+713,
+735,
+825,
+880,
+896
+],
+"slice": "plain",
+"gold_size": 13
+},
+{
+"q": "spotlight trần trắng ánh sáng vàng ấm",
+"gold": [
+206,
+210,
+280,
+351,
+384,
+406,
+585,
+651,
+717,
+753,
+770,
+850,
+870
+],
+"slice": "plain",
+"gold_size": 13
+},
+{
+"q": "cần mua gấp, tôi đang tìm đèn hộp mảnh cho hành lang xám ánh sáng trung tính",
+"gold": [
+112,
+186,
+200,
+355,
+358,
+592,
+707,
+783
+],
+"slice": "verbose",
+"gold_size": 8
+},
+{
+"q": "loại tốt, tôi đang tìm đèn chiếu điểm trên trần xám ánh sáng trắng lạnh",
+"gold": [
+116,
+233,
+253,
+488,
+498,
+540,
+560,
+597,
+748,
+845
+],
+"slice": "verbose",
+"gold_size": 10
+},
+{
+"q": "Kohn ổ điện cắm phích",
+"gold": [
+6,
+391,
+605,
+674,
+859,
+865
+],
+"slice": "brand",
+"gold_size": 6
+},
+{
+"q": "An Cuong gỗ ván cho nội thất",
+"gold": [
+62,
+224,
+283,
+483,
+529,
+633,
+660,
+705,
+789
+],
+"slice": "brand",
+"gold_size": 9
+},
+{
+"q": "đèn hộp mảnh cho hành lang trắng ánh sáng trung tính",
+"gold": [
+24,
+126,
+204,
+451,
+570,
+601,
+670,
+782,
+835,
+885
+],
+"slice": "plain",
+"gold_size": 10
+},
+{
+"q": "be xi ve sinh den",
+"gold": [
+132,
+170,
+326,
+408,
+413,
+480,
+504,
+563,
+610,
+668,
+734,
+784,
+785,
+830,
+836
+],
+"slice": "nodauc",
+"gold_size": 15
+},
+{
+"q": "đèn tuýp dài gắn trần xám ánh sáng trắng lạnh",
+"gold": [
+53,
+182,
+403,
+502,
+521
+],
+"slice": "plain",
+"gold_size": 5
+},
+{
+"q": "nút bấm bật tắt đèn vàng đồng",
+"gold": [
+14,
+79,
+198,
+232,
+238,
+242,
+288,
+331,
+375,
+422,
+449,
+491,
+525,
+719,
+747,
+796,
+891
+],
+"slice": "plain",
+"gold_size": 17
+},
+{
+"q": "loại tốt, tôi đang tìm đèn tuýp dài gắn trần vàng đồng ánh sáng trung tính",
+"gold": [
+421,
+546,
+558,
+712
+],
+"slice": "verbose",
+"gold_size": 4
+},
+{
+"q": "loại tốt, tôi đang tìm mặt bàn đá tự nhiên trắng",
+"gold": [
+284,
+343,
+417,
+433,
+460,
+493,
+501,
+587,
+623,
+676,
+697,
+722,
+756,
+810,
+869,
+889,
+895
+],
+"slice": "verbose",
+"gold_size": 17
+}
+]

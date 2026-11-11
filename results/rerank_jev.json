@@ -1,0 +1,170 @@
+{
+  "recall@10": 0.1412,
+  "hit@10": 0.725,
+  "mrr@10": 0.3435,
+  "p50_ms": 774.1,
+  "input_tokens": 75363,
+  "cost_usd": 0.00301,
+  "queries": [
+    {
+      "q": "tấm gỗ ép làm tủ",
+      "ms": 638.9
+    },
+    {
+      "q": "tấm gỗ ép làm tủ",
+      "ms": 747.4
+    },
+    {
+      "q": "spotlight trần ánh sáng vàng ấm",
+      "ms": 1029.6
+    },
+    {
+      "q": "đèn rọi tranh ánh sáng vàng ấm",
+      "ms": 848.4
+    },
+    {
+      "q": "bộ sen tắm nóng lạnh",
+      "ms": 707.2
+    },
+    {
+      "q": "spotlight trần ánh sáng trung tính",
+      "ms": 1000.3
+    },
+    {
+      "q": "đèn hộp mảnh cho hành lang ánh sáng trắng lạnh",
+      "ms": 666.0
+    },
+    {
+      "q": "downlight âm trần ánh sáng trung tính",
+      "ms": 746.7
+    },
+    {
+      "q": "đế cắm điện âm tường",
+      "ms": 822.4
+    },
+    {
+      "q": "tấm gỗ ép làm tủ",
+      "ms": 751.2
+    },
+    {
+      "q": "đế cắm điện âm tường",
+      "ms": 830.9
+    },
+    {
+      "q": "bệ xí vệ sinh",
+      "ms": 817.0
+    },
+    {
+      "q": "vòi chậu rửa",
+      "ms": 796.6
+    },
+    {
+      "q": "lavabo treo tường",
+      "ms": 738.7
+    },
+    {
+      "q": "vòi hoa sen tắm đứng",
+      "ms": 777.9
+    },
+    {
+      "q": "bệ xí vệ sinh",
+      "ms": 778.9
+    },
+    {
+      "q": "bệ xí vệ sinh",
+      "ms": 902.4
+    },
+    {
+      "q": "đá ốp bếp",
+      "ms": 711.7
+    },
+    {
+      "q": "ổ điện cắm phích",
+      "ms": 720.4
+    },
+    {
+      "q": "đèn sân vườn chống mưa ánh sáng trung tính",
+      "ms": 660.4
+    },
+    {
+      "q": "ổ điện cắm phích",
+      "ms": 670.8
+    },
+    {
+      "q": "tấm gỗ ép làm tủ",
+      "ms": 773.1
+    },
+    {
+      "q": "đèn chiếu điểm trên trần ánh sáng trắng lạnh",
+      "ms": 820.2
+    },
+    {
+      "q": "đèn gắn trần ốp trần ánh sáng trung tính",
+      "ms": 741.4
+    },
+    {
+      "q": "vòi chậu rửa",
+      "ms": 762.9
+    },
+    {
+      "q": "vòi chậu rửa",
+      "ms": 739.6
+    },
+    {
+      "q": "đèn trụ cổng ánh sáng trung tính",
+      "ms": 754.4
+    },
+    {
+      "q": "nút bấm bật tắt đèn",
+      "ms": 775.2
+    },
+    {
+      "q": "bộ sen tắm nóng lạnh",
+      "ms": 852.7
+    },
+    {
+      "q": "vòi chậu rửa",
+      "ms": 980.8
+    },
+    {
+      "q": "đế cắm điện âm tường",
+      "ms": 793.5
+    },
+    {
+      "q": "đèn trụ cổng ánh sáng vàng ấm",
+      "ms": 787.6
+    },
+    {
+      "q": "spotlight trần ánh sáng vàng ấm",
+      "ms": 756.1
+    },
+    {
+      "q": "đèn sân vườn chống mưa ánh sáng vàng ấm",
+      "ms": 788.9
+    },
+    {
+      "q": "đèn rọi tranh ánh sáng trung tính",
+      "ms": 745.4
+    },
+    {
+      "q": "ổ điện cắm phích",
+      "ms": 782.6
+    },
+    {
+      "q": "vòi nước cho chậu rửa mặt",
+      "ms": 769.4
+    },
+    {
+      "q": "vòi hoa sen tắm đứng",
+      "ms": 780.7
+    },
+    {
+      "q": "đá ốp bếp",
+      "ms": 783.8
+    },
+    {
+      "q": "ổ điện cắm phích",
+      "ms": 720.8
+    }
+  ]
+}

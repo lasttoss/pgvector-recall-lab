@@ -1,0 +1,30 @@
+{
+ "n": 100000,
+ "dim": 1024,
+ "copy_s_a": 9.7,
+ "copy_s_b": 9.4,
+ "build_s_scale_a": 123.2,
+ "table_mb_scale_a": 5,
+ "index_mb_scale_a": 821,
+ "build_s_scale_b": 123.3,
+ "table_mb_scale_b": 5,
+ "index_mb_scale_b": 821,
+ "latency_p50_p95": {
+  "single_ef40": [
+   4.03,
+   7.98
+  ],
+  "dual_least_ef40": [
+   685.15,
+   702.18
+  ],
+  "single_ef100": [
+   8.28,
+   10.35
+  ],
+  "dual_least_ef100": [
+   698.76,
+   833.76
+  ]
+ }
+}

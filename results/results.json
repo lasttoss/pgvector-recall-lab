@@ -1,0 +1,23 @@
+{
+  "lexical": {
+    "recall@10": 0.0,
+    "hit@10": 0.0,
+    "mrr@10": 0.0,
+    "p50_ms": 0.18,
+    "empty_queries": 40
+  },
+  "vector": {
+    "recall@10": 0.0529,
+    "hit@10": 0.375,
+    "mrr@10": 0.0898,
+    "p50_ms": 0.69,
+    "empty_queries": 0
+  },
+  "hybrid": {
+    "recall@10": 0.0529,
+    "hit@10": 0.375,
+    "mrr@10": 0.0898,
+    "p50_ms": 0.02,
+    "empty_queries": 0
+  }
+}

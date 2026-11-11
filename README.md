@@ -7,6 +7,34 @@ Search, Ranking and Recommendation in the same sentence. That implies `pgvector`
 Elasticsearch. This lab measures whether that choice holds up, on data shaped like the
 catalogue such a product would index: building materials, lighting, sanitary ware.
 
+
+## Results shipped with the repository
+
+`results/` holds the raw JSON of every run cited in this README, so the numbers can be checked
+without re-running anything:
+
+| file | contents |
+|---|---|
+| `results/model_zoo.json` | five-model shootout, per query set, index size, encode throughput |
+| `results/power_results.json` | per-query outcomes for the 250-query benchmark (bootstrap input) |
+| `results/queries_power.json` | the 250 queries with their attribute-derived gold sets |
+| `results/halfvec_results.json` | float32 vs fp16, per query |
+| `results/diacritics_results.json` | accented / unaccented / best-of-both on unaccented queries |
+| `results/scale_100000.json` | 2 x 100k-row index build times, sizes, latency |
+| `results/rerank_jev.json` | second-stage rerank: quality, latency, token cost |
+
+Reproduce from scratch (Postgres 16 + pgvector, Python 3.12):
+
+```bash
+docker compose up -d          # pgvector 0.8.7 on :55432
+pip install --target /tmp/emblibs fastembed psycopg2-binary
+PYTHONPATH=/tmp/emblibs make data index        # catalogue + baseline indexes
+PYTHONPATH=/tmp/emblibs make power bootstrap   # 250 queries, per-model, with CIs
+```
+
+The heavier targets (`zoo`, `halfvec`, `diacritics`, `scale`) need
+`pip install sentence-transformers` and, for `scale`, ~2 GB of RAM per 100k rows.
+
 ## What is measured
 
 | Component | Choice |

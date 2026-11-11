@@ -1,0 +1,20 @@
+{
+ "Qwen3-Embedding-0.6B + instruct": {
+  "paraphrase": {
+   "metrics": [
+    0.086,
+    0.293,
+    0.525
+   ],
+   "encode_query_ms": 30.5
+  },
+  "spec": {
+   "metrics": [
+    0.966,
+    0.915,
+    1.0
+   ],
+   "encode_query_ms": 31.7
+  }
+ }
+}

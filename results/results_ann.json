@@ -1,0 +1,26 @@
+[
+  {
+    "ef_search": 10,
+    "recall_vs_exact": 0.975,
+    "p50_ms": 0.23,
+    "exact_p50_ms": 0.64
+  },
+  {
+    "ef_search": 40,
+    "recall_vs_exact": 1.0,
+    "p50_ms": 0.62,
+    "exact_p50_ms": 0.62
+  },
+  {
+    "ef_search": 100,
+    "recall_vs_exact": 1.0,
+    "p50_ms": 0.59,
+    "exact_p50_ms": 0.58
+  },
+  {
+    "ef_search": 200,
+    "recall_vs_exact": 1.0,
+    "p50_ms": 0.57,
+    "exact_p50_ms": 0.55
+  }
+]
