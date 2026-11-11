@@ -435,6 +435,33 @@ The binding constraint at millions of rows is RAM for the graph, not query laten
 `halfvec` (measured: 3x smaller index, 2.4x faster queries here, quality loss not measured) or with
 Matryoshka truncation to 256-512 dims before reaching for a second machine.
 
+
+## Two different clocks: request path vs backfill
+
+The build times above are backfill, not response time. Measured separately, on the same 100k-row
+table with its HNSW index already in place:
+
+| step in the request path | measured |
+|---|---|
+| insert one new row and commit (index updated incrementally, no rebuild) | **11.9 ms** p50, 16 ms p95 |
+| query while inserts are running | **4.2 ms** p50, 5.9 ms p95 (no degradation) |
+| encode the query (e5-large, CPU) | 17-19 ms |
+| vector search, one index | 5.4 ms |
+| vector search, two indexes, merged | 18.8 ms |
+| cross-encoder rerank of the top candidates | 774 ms |
+| first token from the answer model | 1-3 s |
+
+An indexed knowledge base therefore answers in **tens of milliseconds**, and one feedback row enters
+the index in about **12 ms** — nothing in the care-agent path waits minutes. The minutes belong to a
+different operation: rebuilding the whole index after an embedding-model change (123 s per 100k rows,
+~25-30 min per million, projected 6-8 h at 10M). That is a planned blue/green migration, and it is
+the reason `embedding_model` is a stored column: without it you cannot tell which rows live in the
+old vector space during the rebuild.
+
+Where the seconds actually go is the second stage and the language model, not the database: rerank
+774 ms, first token 1-3 s. If a care agent needs a sub-second reply, the rerank gets dropped for the
+fast path and kept for the "ask AI" path.
+
 ## Does pgvector hold up? What it did and did not handle
 
 Everything measured in this README ran inside Postgres: six embedding models (256, 384, 768 and
