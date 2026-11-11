@@ -3,3 +3,5 @@ out/*.json
 out/*.log
 scripts/__pycache__/
 *.pyc
+.deps/
+.venv/

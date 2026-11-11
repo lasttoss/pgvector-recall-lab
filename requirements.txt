@@ -1,0 +1,11 @@
+# Core: retrieval + database
+fastembed>=0.6
+psycopg2-binary>=2.9
+numpy>=1.26
+
+# Needed for the model shootout, halfvec, diacritics and scale runs.
+# transformers is pinned: the nomic v2-moe remote code calls an API removed in v5.
+sentence-transformers>=3.0
+transformers==4.46.3
+einops>=0.7
+sentencepiece>=0.2

@@ -200,20 +200,92 @@ HNSW: 1966 bytes/row  (384 dims = 1536 B raw vectors + ~430 B graph)
 ```
 The per-row number is measured; the 1M projection is arithmetic on top of it, not a benchmark.
 
-## Reproduce
+## The pipeline in one figure
+
+The figure below is the whole lab: two offline indexes built from one model, three online probes
+issued in a single pass, and the measurement panel that decides whether any of it is worth keeping.
+
+![Retrieval pipeline: offline builds two vector columns and a lexical index, online probes all three, fuses with RRF, reranks optionally, and returns ten results](docs/figures/retrieval-pipeline.png)
+
+**Figure 1.** Offline builds two vector columns from the same model plus a lexical index; online
+probes all three in one pass, fuses with RRF, and reranks only where the latency budget allows.
+Source: [`docs/figures/retrieval-pipeline.html`](docs/figures/retrieval-pipeline.html) — self-contained
+SVG, no remote assets.
+
+## How to run
+
+Prerequisites: Docker (with Compose), Python 3.12, ~8 GB free RAM for the core targets
+(the `scale` target needs ~2 GB per 100k rows on top), and network access on the first run
+because the embedding models are downloaded from Hugging Face.
 
 ```bash
-docker compose up -d
-PYTHONPATH=/tmp/emblibs python3 scripts/gen_dataset.py      # 900 items
-python3 scripts/queries.py && python3 scripts/queries_paraphrase.py
-PYTHONPATH=/tmp/emblibs python3 scripts/build_index.py      # loads + embeds + indexes
-PYTHONPATH=/tmp/emblibs python3 scripts/eval.py out/queries.json
-PYTHONPATH=/tmp/emblibs python3 scripts/eval.py out/queries_paraphrase.json
-PYTHONPATH=/tmp/emblibs python3 scripts/eval_ann.py
+make setup          # venv + requirements (about 1 minute, downloads ~150 MB)
+make up             # PostgreSQL 16 + pgvector 0.8.7 on 127.0.0.1:55432
+make doctor         # confirms the container is up and the python deps import
+make data index     # 900 catalogue rows, embeddings, HNSW + GIN indexes (~1 minute)
+make eval           # lexical vs vector vs hybrid on both query sets
 ```
 
+Expected output of `make eval` (default model, MiniLM 384) — the two query sets, verbatim:
 
+```
+set A (specification queries)
+strategy    recall@10   hit@10   mrr@10   p50 ms  empty
+lexical         1.000    1.000    1.000     0.65      0
+vector          0.768    0.867    0.601     0.53      0
+hybrid          1.000    1.000    0.992     0.02      0
 
+set B (paraphrase queries)
+strategy    recall@10   hit@10   mrr@10   p50 ms  empty
+lexical         0.000    0.000    0.000     0.54     40
+vector          0.053    0.375    0.090     0.50      0
+hybrid          0.053    0.375    0.090     0.01      0
+```
+
+The `lexical` row on set B is the finding this repository exists for: BM25-family search returns
+nothing for all 40 paraphrase queries. Latencies move by a few tenths of a millisecond between
+machines; the retrieval scores do not. The larger tables further down use `multilingual-e5-large`
+and come from `make models compare`, not from this default path.
+
+Then, depending on what you want to check:
+
+| goal | command | needs | time |
+|---|---|---|---|
+| baseline on both query sets | `make eval` | core | ~1 min |
+| five-model shootout | `make models compare zoo` | core + sentence-transformers | ~15 min |
+| 250-query benchmark with CIs | `make queries power bootstrap` | same | ~10 min |
+| fp16 versus fp32 | `make halfvec` | same | ~2 min |
+| Vietnamese diacritics | `make diacritics` | same | ~3 min |
+| two-vector index cost at 100k | `make scale` | core, ~5 GB disk | ~10 min |
+| filtered search behaviour | `make filter` | core | ~1 min |
+
+`make clean` drops the container and its volume, deleting every index.
+
+### When something fails
+
+| symptom | cause | fix |
+|---|---|---|
+| `connection refused ... :55432` | container still starting | `docker compose ps`, wait for `healthy`, then retry |
+| `relation "items" does not exist` | indexes not built yet | `make data index` before `make eval` |
+| `expected 1024 dimensions, not 384` | table built by another model | rebuild with the model named in the target, e.g. `make index` |
+| `No module named psycopg2` | running outside the venv | `make setup`, then prefix commands with `make` rather than `python3` |
+| first run stalls for minutes | embedding model download (0.1-2 GB) | check `~/.cache/huggingface`, re-run; downloads are cached |
+| nomic v2-moe fails on `get_extended_attention_mask` | `transformers` v5 removed the API | `pip install transformers==4.46.3`, as pinned in `requirements.txt` |
+| port 55432 already in use | another lab container | `docker compose down`, or edit the port in `docker-compose.yml` |
+
+## Reproducing one specific number
+
+Every table above names its target, and every raw run is committed under `results/`. To check a
+single claim rather than re-run the lab, open the matching JSON and the script that wrote it:
+
+| claim | command | raw output |
+|---|---|---|
+| previous table, exact query set | `make eval` | `results/results.json` |
+| five-model shootout | `make zoo` | `results/model_zoo.json` |
+| 250-query benchmark + CIs | `make power bootstrap` | `results/power_results.json` |
+| fp16 versus fp32 | `make halfvec` | `results/halfvec_results.json` |
+| diacritics | `make diacritics` | `results/diacritics_results.json` |
+| 100k-row index cost | `make scale` | `results/scale_100000.json` |
 
 ## Model shootout for Vietnamese, and why the model is the wrong lever
 
