@@ -42,6 +42,7 @@ zoo:      ; $(PY) scripts/eval_model_zoo.py
 bootstrap: ; $(PY) scripts/bootstrap_zoo.py
 power:   ; $(PY) scripts/eval_power.py
 queries: ; $(PY) scripts/gen_queries_power.py
+restore:  ; $(PY) scripts/eval_diacritics_restore.py
 diacritics: ; $(PY) scripts/eval_diacritics.py
 scale:   ; N=100000 $(PY) scripts/scale_test.py
 halfvec: ; $(PY) scripts/eval_halfvec.py

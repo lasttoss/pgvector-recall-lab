@@ -1,0 +1,22 @@
+{
+ "arms": {
+  "no restoration": 0.3016,
+  "two indexes (UNION ALL)": 0.4286,
+  "restoration, one index": 0.619,
+  "restoration + two indexes": 0.5714
+ },
+ "safety": {
+  "typed with diacritics": 0.7619,
+  "restored (all words)": 0.6667,
+  "restored (only missing)": 0.7619
+ },
+ "mixed": {
+  "mixed, no restoration": 0.4921,
+  "mixed, restored": 0.6825
+ },
+ "tokens_exact": 250,
+ "tokens_total": 459,
+ "queries_exact": 3,
+ "ms_single": 2.55,
+ "ms_merged": 5.1
+}

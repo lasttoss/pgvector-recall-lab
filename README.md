@@ -415,6 +415,44 @@ diacritics loss costs** (0.127 of 0.460): 0.429 against 0.762 for correctly acce
 information is gone from the input, so no second vector can restore it — this is damage control,
 not a fix.
 
+### The cheaper fix: guess the diacritics back from the phrase, not from a second index
+
+A single word cannot be restored — `may` is *may / máy / mấy / mây*. A phrase can, because the
+neighbouring words decide the reading. So instead of storing a second vector, build a lexicon from
+the catalogue text itself (names, descriptions, categories, attributes — 112 unigrams, 693 bigrams,
+1 617 trigrams), match the query at n-gram length 3 then 2 then 1, and restore before embedding.
+No model, no network, no extra index, microseconds per query.
+
+Four arms over the same 63 unaccented queries, paired bootstrap (10 000 resamples) against no
+restoration:
+
+| arm | hit@10 | diff | 95% CI |
+|---|---|---|---|
+| no restoration, one accented index | 0.302 | — | — |
+| two indexes, merge (`UNION ALL`) | 0.429 | +0.127 | [-0.048, +0.302] |
+| **phrase restoration, one index** | **0.619** | **+0.317** | **[+0.159, +0.476]** |
+| restoration + two indexes | 0.571 | +0.270 | [+0.095, +0.444] |
+
+Restoration beats the second index by **+0.190 [+0.016, +0.365]**, and the two do not stack: 0.571
+is below 0.619, so paying for a second index on top of restoration buys nothing. Token-level
+restoration is only **250/459 exact (54.5 %)** and 3/63 whole queries come back byte-identical —
+the errors land on words that do not discriminate (`chiếu sáng` becomes `chiều sang`), while the
+words that do (category nouns, colours) are recovered. Retrieval is more forgiving than the token
+metric suggests, and the token metric is the one to watch if the corpus changes.
+
+**The guard is mandatory.** Restoring every word, including ones that already carry marks, costs
+0.095 hit@10 (0.762 → 0.667, CI [-0.254, +0.063]) because the lexicon rewrites correct text. Skip
+words that already have diacritics and the safety arm is exactly unchanged at 0.762.
+
+Half-accents are the realistic phone case — some words typed with marks, some without. On 63 queries
+with a random half of each sentence stripped: **0.492 → 0.683 (+0.190 [+0.016, +0.365])**.
+
+Honest scope: the lexicon comes from the corpus that will be searched, which a product catalogue
+always has and an open-domain chat assistant does not. It encodes domain vocabulary, so it will
+restore `vòi chậu rửa` and not `blockchain`. It also cannot beat 0.762 — restoration recovers 69 %
+of the loss (0.317 of 0.460), so a second signal is still worth having. Raw output:
+`results/diacritics_restore.json`, target `make restore`.
+
 ### What this says about the two strategy options
 
 "Force everything into English" measured 0.550 on the old set and costs 205 ms of translation per
