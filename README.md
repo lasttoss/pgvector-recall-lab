@@ -256,6 +256,26 @@ is not a model problem: it is how a large share of real phone input arrives, and
 in this shootout handles it. Filler words, by contrast, cost nothing (0.790 vs 0.762) — dropping
 noise tolerance from the requirements.
 
+
+### halfvec costs nothing measurable here (so far)
+
+Same 900 documents, same `multilingual-e5-large`, same 250 queries — only the stored precision changes:
+
+| | hit@10 | recall@10 | MRR@10 | index |
+|---|---|---|---|---|
+| `vector(1024)` float32 | 0.696 | 0.415 | 0.552 | 7.7 KB/row |
+| `halfvec(1024)` fp16 | **0.696** | **0.415** | **0.554** | **2.6 KB/row** |
+
+Per slice the numbers are identical to three decimals (`brand` 0.935, `plain` 0.762, `verbose` 0.790,
+`nodauc` 0.302). The paired difference in hit@10 is +0.000 with a CI of [+0.000, +0.000]: not a single
+query changed its top-10 membership. At 100k rows the same substitution measured 5.43 -> 2.21 ms per
+query and 819 -> 273 MB per index, and casting an existing column is a one-off `SELECT embedding::halfvec`
+(2 s per 100k rows).
+
+Honest scope: 900 documents and 10-decimal cosine gaps mean rounding rarely flips an ordering. At a
+million rows the top-10 boundary has ties that are much closer together, so this particular experiment
+cannot promise the same zero loss — it shows there is no reason to start with float32.
+
 ### The fix that works: index the unaccented copy as a second vector
 
 Same document, two vectors — accented and diacritics-stripped — ranked by `LEAST` of the two
