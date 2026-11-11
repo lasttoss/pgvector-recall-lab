@@ -35,6 +35,10 @@ PYTHONPATH=/tmp/emblibs make power bootstrap   # 250 queries, per-model, with CI
 The heavier targets (`zoo`, `halfvec`, `diacritics`, `scale`) need
 `pip install sentence-transformers` and, for `scale`, ~2 GB of RAM per 100k rows.
 
+**Read this first:** [`docs/SEARCH-DECISIONS.md`](docs/SEARCH-DECISIONS.md) — the nine decisions this
+lab ended up making, each with its number, its confidence interval and what the measurement does not
+cover.
+
 ## What is measured
 
 | Component | Choice |
