@@ -391,6 +391,50 @@ If the two versions must use different models (an English-only embedder for EN, 
 for VI), you cannot fuse at the SQL level — you need per-language normalisation, and that is a
 much larger project than it looks.
 
+
+## Scale: what two vectors cost, and the query pattern that quietly breaks
+
+Synthetic 1024-dim vectors, 100 000 rows x 2 tables, PostgreSQL 16 + pgvector, 16 cores,
+`maintenance_work_mem = 1GB`, `max_parallel_maintenance_workers = 8`:
+
+| | `vector(1024)` | `halfvec(1024)` |
+|---|---|---|
+| index build, one index | 123 s | 101 s |
+| index size | 819 MB (8.2 KB/row) | **273 MB (2.7 KB/row)** |
+| total table + index | 1 380 MB | 558 MB |
+| query, one index, p50 | 5.43 ms | **2.21 ms** |
+| query, two indexes, `UNION ALL` merge, p50 | **18.8 ms** | (projection ~7 ms) |
+| query, two indexes, `LEAST` join, p50 | **820 ms** | — |
+
+**The `LEAST` pattern does not scale, and it fails silently.** `LEAST(a.embedding <=> $1,
+b.embedding <=> $1)` in an `ORDER BY` is an expression over a join, so the planner cannot use either
+HNSW index and falls back to a full scan: 820 ms instead of 19 ms at 100k rows. At 900 rows the same
+query looked free. The pattern that keeps the indexes is to probe each index separately and merge:
+
+```sql
+WITH cand AS (
+  (SELECT id, embedding          <=> $1 AS d FROM product ORDER BY 2 LIMIT 50)
+  UNION ALL
+  (SELECT id, embedding_unaccent <=> $1 AS d FROM product ORDER BY 2 LIMIT 50)
+)
+SELECT id, MIN(d) AS d FROM cand GROUP BY id ORDER BY d LIMIT 10;
+```
+
+Cost of the second vector, measured: ingest encode x2, index size x2, build time x2, query ~3.5x
+(5.4 -> 18.8 ms at 100k rows, because two deeper index probes replace one).
+
+Extrapolations (**projections, not measurements** — this machine cannot hold 1M x 1024 x 2):
+
+| rows | index build, per index | RAM, 2 indexes f32 | RAM, 2 indexes halfvec | query (single index) |
+|---|---|---|---|---|
+| 100k | 123 s (measured) | 1.6 GB (measured) | 0.55 GB (measured) | 5.4 ms (measured) |
+| 1M | ~25-30 min | ~16 GB | ~5.5 GB | ~8-12 ms |
+| 10M | ~6-8 h | ~165 GB | ~55 GB | ~15-25 ms |
+
+The binding constraint at millions of rows is RAM for the graph, not query latency. Halve it with
+`halfvec` (measured: 3x smaller index, 2.4x faster queries here, quality loss not measured) or with
+Matryoshka truncation to 256-512 dims before reaching for a second machine.
+
 ## Does pgvector hold up? What it did and did not handle
 
 Everything measured in this README ran inside Postgres: six embedding models (256, 384, 768 and

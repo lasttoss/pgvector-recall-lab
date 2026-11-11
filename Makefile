@@ -23,3 +23,4 @@ bootstrap: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/bootstrap_zoo
 power:   ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_power.py
 queries: ; $(PY) scripts/gen_queries_power.py
 diacritics: ; PYTHONPATH=/tmp/emblibs-t4:/tmp/emblibs $(PY) scripts/eval_diacritics.py
+scale:   ; PYTHONPATH=/tmp/emblibs N=100000 $(PY) scripts/scale_test.py
