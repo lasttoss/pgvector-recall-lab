@@ -403,10 +403,17 @@ distances, exactly like the dual-language pattern above. 63 `nodauc` queries:
 | stripped index only | 0.413 | +0.111 | [-0.016, +0.238] |
 | **best of both (`LEAST`)** | **0.429** | **+0.127** | **[+0.016, +0.254]** |
 
-+0.127 hit@10 for about 2 ms per query and one extra encode per document — the same order of gain
-as cross-encoder reranking (+0.10) at a fraction of the cost. Store
-`embedding` and `embedding_unaccent`, both from the same model, and never make the query side guess
-whether the user typed diacritics.
++0.127 hit@10 — the same order of gain as cross-encoder reranking (+0.10), at +13.4 ms per query
+measured at 100k rows (5.4 -> 18.8 ms, two index probes instead of one; see the scale section) plus
+one extra encode per document. Store `embedding` and `embedding_unaccent`, both from the same model,
+and never make the query side guess whether the user typed diacritics.
+
+Two honest limits on that table. The quality run ranks with `LEAST` over a join because at 900 rows
+it returns the same top-10 as the merge pattern and is shorter to write; the production shape is the
+`UNION ALL` query below, which keeps the indexes. And **+0.127 recovers only 28 % of the accuracy
+diacritics loss costs** (0.127 of 0.460): 0.429 against 0.762 for correctly accented input. The
+information is gone from the input, so no second vector can restore it — this is damage control,
+not a fix.
 
 ### What this says about the two strategy options
 
