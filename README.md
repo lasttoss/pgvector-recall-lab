@@ -182,6 +182,46 @@ PYTHONPATH=/tmp/emblibs python3 scripts/eval_ann.py
 
 
 
+
+## Model shootout for Vietnamese, and why the model is the wrong lever
+
+Seven models, one harness, same 900 rows and the same 40 Vietnamese paraphrases. `hit@10` on the
+paraphrase set, with a paired bootstrap (10 000 resamples) against `multilingual-e5-large`:
+
+| model | dim | docs/s | index B/row | hit@10 | diff vs e5 | 95% CI |
+|---|---|---|---|---|---|---|
+| `multilingual-e5-large` (baseline) | 1024 | 13.8 | 7 855 | 0.575 | — | — |
+| `BAAI/bge-m3` | 1024 | 12.7 | 7 855 | 0.550 | -0.025 | [-0.200, +0.125] |
+| `AITeamVN/Vietnamese_Embedding` | 1024 | 14.0 | 7 855 | 0.550 | -0.025 | [-0.225, +0.175] |
+| `Qwen3-Embedding-0.6B` + instruction | 1024 | 18.3 | 7 846 | 0.525 | -0.050 | [-0.225, +0.125] |
+| `bkai-foundation-models/vietnamese-bi-encoder` | 768 | **52.4** | **3 932** | 0.525 | -0.050 | [-0.175, +0.075] |
+
+**Every confidence interval contains zero.** With 40 queries these models cannot be separated at
+all: the intervals are wider than the differences. Reporting "e5-large wins" from this table would
+be reading noise. What the table *can* support is a cost decision — the Vietnamese bi-encoder
+encodes 3.8x faster and needs half the index space with no measurable quality loss — and a plan:
+to detect a real 0.05 difference at this variance you need roughly 200-300 queries, not 40.
+
+Notes on the big vendors, so nobody repeats the search:
+
+- **Google**: `google/embeddinggemma-300m` is a gated repo (401 without accepting the licence and a
+  token), and Gemini's `gemini-embedding-001` is API-only. Neither is testable in an offline lab.
+- **Meta**: no general-purpose multilingual text-embedding model is published on Hugging Face; their
+  multilingual sentence encoder (SONAR) ships inside `fairseq2` and is built for translation, not
+  retrieval.
+- **NVIDIA**: `nvidia/llama-embed-nemotron-8b` is multilingual and strong, but it is an 8B model
+  (16 GB) — encoding 900 documents on CPU is a multi-hour job, so it was not measured here. Their
+  smaller `NV-Embed-v2` is English-centric.
+- `Alibaba-NLP/gte-multilingual-base` crashes in its own remote code under `transformers` 4.46
+  (`rope_cos[position_ids]` index out of bounds), so it was dropped; the Vietnamese fine-tune of the
+  same family (`AITeamVN`) covers that ground and runs fine.
+
+**The lever that is measurable is not the model.** Reranking the top candidates with a
+cross-encoder-style decision model moved the same benchmark from hit@10 0.625 to **0.725** and
+MRR 0.244 to **0.344**, at 774 ms per query (`out/rerank_jev.json`). That is +0.10 where model
+swapping gave +0.00 inside the noise. If you have one improvement to spend, spend it on the second
+stage, not on a bigger first-stage model.
+
 ## Translate first, then search in English?
 
 The obvious alternative to a multilingual embedding model: machine-translate the corpus into

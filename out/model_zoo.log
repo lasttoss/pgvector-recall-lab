@@ -1,0 +1,17 @@
+skip (done): e5-large (baseline)
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+LOAD FAIL gte-multilingual-base: ValueError: Alibaba-NLP/new-impl You can inspect the repository content at https://hf.co/Alibaba-NLP/gte-multilingual-base.
+Please pass the argument `trust_remote_code=True` to allow custom code to be run.
+LOAD FAIL embeddinggemma-300m (Google): GatedRepoError: 401 Client Error. (Request ID: Root=1-6af3cbc8-2589177e7b0e7faf64f331a6;2c6a3b09-caa2-4243-82c5-c0e12eb50091)
+
+Cannot access gated repo for url https://huggingface.co/google/embeddinggemma-300m/resolve/57c266a740f537b4dc058e1b0cda161fd15afa75/m
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 43586.16it/s]
+bge-m3                             dim= 1024 docs/s=  12.7 para=(0.086, 0.228, 0.55) spec=(0.984, 0.936, 1.0)
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights: 100%|██████████| 310/310 [00:00<00:00, 15464.99it/s]
+This model was loaded in torch.bfloat16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+Qwen3-Embedding-0.6B               dim= 1024 docs/s=  18.3 para=(0.085, 0.278, 0.5) spec=(0.985, 0.923, 1.0)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 14651.77it/s]
+Vietnamese_Embedding (AITeamVN)    dim= 1024 docs/s=  14.0 para=(0.092, 0.215, 0.55) spec=(0.984, 0.945, 1.0)
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2522.37it/s]
+vietnamese-bi-encoder (bkai)       dim=  768 docs/s=  52.4 para=(0.074, 0.2, 0.525) spec=(0.908, 0.835, 0.95)
+DONE
